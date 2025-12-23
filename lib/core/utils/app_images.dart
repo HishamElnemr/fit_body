@@ -14,6 +14,10 @@ class Assets {
   /// Assets/images/03OnlineShopping.png
   static const String assetsImages03OnlineShopping = "Assets/images/03OnlineShopping.png";
 
+  /// Assets for assetsImagesArrowLeft
+  /// Assets/images/arrow_left.svg
+  static const String assetsImagesArrowLeft = "Assets/images/arrow_left.svg";
+
   /// Assets for assetsImagesForgetPassword
   /// Assets/images/forget_password.svg
   static const String assetsImagesForgetPassword = "Assets/images/forget_password.svg";

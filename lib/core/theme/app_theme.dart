@@ -7,7 +7,11 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.cyan,
     brightness: Brightness.light,
-    colorScheme: const ColorScheme.light(surface: AppColors.cyan50),
+    colorScheme: const ColorScheme.light(
+      onPrimary: AppColors.black,
+      surface: AppColors.cyan50,
+      onSecondary: AppColors.black,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.black,
@@ -20,7 +24,11 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.black,
     primaryColor: AppColors.cyan,
     brightness: Brightness.dark,
-    colorScheme: const ColorScheme.dark(surface: AppColors.darkCyan50),
+    colorScheme: const ColorScheme.dark(
+      onPrimary: AppColors.cyan,
+      surface: AppColors.darkCyan50,
+      onSecondary: AppColors.white,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.cyan,

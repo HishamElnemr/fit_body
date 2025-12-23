@@ -1,31 +1,32 @@
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class CustomFilledButton extends StatelessWidget {
+  const CustomFilledButton({
     super.key,
-    this.color,
     required this.text,
-    this.onPressed,
+    required this.onPressed,
+    this.icon,
   });
 
-  final Color? color;
   final String text;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 21),
-        backgroundColor: color,
-        minimumSize: const Size(double.infinity, 60),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
-      onPressed: onPressed,
-      child: Text(
-        text,
-        style: AppStyles.body2Regular14(context).copyWith(color: Colors.white),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(text, style: AppStyles.button2SemiBold14(context)),
+          if (icon != null) ...[const SizedBox(width: 8), icon!],
+        ],
       ),
     );
   }

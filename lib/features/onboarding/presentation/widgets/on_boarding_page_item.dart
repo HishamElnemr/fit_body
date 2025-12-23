@@ -1,24 +1,24 @@
 import 'package:fb_fitbody/core/constants/app_colors.dart';
 import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/theme/cubit/change_theme_cubit.dart';
-import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/custom_button.dart';
-import 'package:fb_fitbody/core/widgets/custom_logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OnBoardingView extends StatelessWidget {
-  const OnBoardingView({super.key});
+class OnBoardingPageItem extends StatelessWidget {
+  const OnBoardingPageItem({
+    super.key,
+    required this.leading,
+    required this.title,
+    required this.description,
+    required this.image,
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(body: SafeArea(child: OnBoardingViewBody()));
-  }
-}
-
-class OnBoardingViewBody extends StatelessWidget {
-  const OnBoardingViewBody({super.key});
+  final Widget leading;
+  final String title;
+  final String description;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +27,7 @@ class OnBoardingViewBody extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
+            flex: 2,
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,
@@ -42,7 +43,7 @@ class OnBoardingViewBody extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const CustomLogoWidget(),
+                        leading,
                         Text(
                           'Skip for now',
                           style: AppStyles.body2Medium14(
@@ -51,42 +52,36 @@ class OnBoardingViewBody extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 45),
+                    const Expanded(child: SizedBox(height: 45)),
                     Image.asset(
-                      Assets.assetsImages01OnlineShopping,
+                      image,
                       width: 240,
                       height: 240,
                       fit: BoxFit.contain,
                     ),
+                    const Expanded(child: SizedBox(height: 15)),
                   ],
                 ),
               ),
             ),
           ),
           const SizedBox(height: 24),
-          Container(
+          Expanded(
+            flex: 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  'Explore a wide range of products',
-                  style: AppStyles.heading2Bold24(
-                    context,
-                  ).copyWith(color: AppColors.black),
-                ),
+                Text(title, style: AppStyles.heading2Bold24(context)),
                 const SizedBox(height: kHorizontalPadding),
                 Text(
                   textAlign: TextAlign.center,
-                  'Explore a wide range of products at your fingertips. QuickMart offers an extensive collection to suit your needs.',
+                  description,
                   style: AppStyles.body1Regular16(
                     context,
                   ).copyWith(color: AppColors.lightGrey150),
                 ),
                 const SizedBox(height: 24),
                 CustomButton(
-                  color: Theme.of(
-                    context,
-                  ).elevatedButtonTheme.style?.backgroundColor,
                   text: 'Next',
                   onPressed: () {
                     context.read<ChangeThemeCubit>().toggleTheme();
@@ -95,6 +90,7 @@ class OnBoardingViewBody extends StatelessWidget {
               ],
             ),
           ),
+          const SizedBox(height: 24),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:fb_fitbody/core/routes/routes_name.dart';
-import 'package:fb_fitbody/features/on_boarding_view/on_boarding_view.dart';
-import 'package:fb_fitbody/features/splash_view/splash_view.dart';
+import 'package:fb_fitbody/features/auth/presentation/views/login_view.dart';
+import 'package:fb_fitbody/features/onboarding/presentation/on_boarding_view/on_boarding_view.dart';
+import 'package:fb_fitbody/features/splash/presentation/splash_view/splash_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -11,6 +12,9 @@ class AppRoutes {
 
       case RoutesName.onBoarding:
         return MaterialPageRoute(builder: (context) => const OnBoardingView());
+
+      case RoutesName.login:
+        return MaterialPageRoute(builder: (context) => const LoginView());
 
       default:
         return MaterialPageRoute(
