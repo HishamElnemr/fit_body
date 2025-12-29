@@ -1,5 +1,6 @@
 import 'package:fb_fitbody/core/constants/app_colors.dart';
 import 'package:fb_fitbody/core/constants/app_constants.dart';
+import 'package:fb_fitbody/core/routes/routes_name.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/custom_filled_button.dart';
@@ -80,7 +81,7 @@ class OnBoardingPageThreeItem extends StatelessWidget {
                       child: CustomOutlinedButton(
                         text: 'Login',
                         onPressed: () {
-                          // Handle login
+                          Navigator.pushNamed(context, RoutesName.login);
                         },
                       ),
                     ),
@@ -90,7 +91,7 @@ class OnBoardingPageThreeItem extends StatelessWidget {
                         text: 'Get Started',
                         icon: const Icon(Icons.arrow_forward, size: 20),
                         onPressed: () {
-                          // Handle get started
+                          Navigator.pushNamed(context, RoutesName.signUp);
                         },
                       ),
                     ),

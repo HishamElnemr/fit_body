@@ -18,9 +18,21 @@ class Assets {
   /// Assets/images/arrow_left.svg
   static const String assetsImagesArrowLeft = "Assets/images/arrow_left.svg";
 
+  /// Assets for assetsImagesEye
+  /// Assets/images/eye.svg
+  static const String assetsImagesEye = "Assets/images/eye.svg";
+
+  /// Assets for assetsImagesEyeSlash
+  /// Assets/images/eye-slash.svg
+  static const String assetsImagesEyeSlash = "Assets/images/eye-slash.svg";
+
   /// Assets for assetsImagesForgetPassword
   /// Assets/images/forget_password.svg
   static const String assetsImagesForgetPassword = "Assets/images/forget_password.svg";
+
+  /// Assets for assetsImagesGoogle
+  /// Assets/images/google.svg
+  static const String assetsImagesGoogle = "Assets/images/google.svg";
 
   /// Assets for assetsImagesIcon
   /// Assets/images/icon.svg

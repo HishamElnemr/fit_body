@@ -9,8 +9,6 @@ class CustomLogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SvgPicture.asset(Assets.assetsImagesIcon, width: 35, height: 35),
         Text('uickMart', style: AppStyles.heading1Bold32(context)),

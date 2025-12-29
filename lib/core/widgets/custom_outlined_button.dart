@@ -6,11 +6,12 @@ class CustomOutlinedButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
+    this.icon,
   });
 
   final String text;
   final VoidCallback onPressed;
-
+  final Widget? icon;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -26,11 +27,17 @@ class CustomOutlinedButton extends StatelessWidget {
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
-      child: Text(
-        text,
-        style: AppStyles.button2SemiBold14(
-          context,
-        ).copyWith(color: Theme.of(context).colorScheme.onPrimary),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: AppStyles.button2SemiBold14(
+              context,
+            ).copyWith(color: Theme.of(context).colorScheme.onPrimary),
+          ),
+          if (icon != null) ...[const SizedBox(width: 8), icon!],
+        ],
       ),
     );
   }

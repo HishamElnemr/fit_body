@@ -7,10 +7,16 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.cyan,
     brightness: Brightness.light,
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: AppColors.cyan,
+      selectionColor: AppColors.cyan,
+      selectionHandleColor: AppColors.cyan,
+    ),
     colorScheme: const ColorScheme.light(
       onPrimary: AppColors.black,
       surface: AppColors.cyan50,
       onSecondary: AppColors.black,
+      onTertiary: AppColors.lightGrey50,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -24,10 +30,16 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.black,
     primaryColor: AppColors.cyan,
     brightness: Brightness.dark,
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: AppColors.cyan,
+      selectionColor: AppColors.cyan,
+      selectionHandleColor: AppColors.cyan,
+    ),
     colorScheme: const ColorScheme.dark(
       onPrimary: AppColors.cyan,
       surface: AppColors.darkCyan50,
       onSecondary: AppColors.white,
+      onTertiary: AppColors.darkGrey50,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
