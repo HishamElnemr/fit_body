@@ -37,5 +37,9 @@ class Assets {
   /// Assets for assetsImagesIcon
   /// Assets/images/icon.svg
   static const String assetsImagesIcon = "Assets/images/icon.svg";
+
+  /// Assets for assetsImagesSearchNormal
+  /// Assets/images/search-normal.svg
+  static const String assetsImagesSearchNormal = "Assets/images/search-normal.svg";
 }
 
