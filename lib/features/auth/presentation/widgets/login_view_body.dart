@@ -3,7 +3,7 @@ import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/routes/routes_name.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/custom_logo_widget.dart';
-import 'package:fb_fitbody/features/auth/presentation/widgets/login_form.dart';
+import 'package:fb_fitbody/features/auth/presentation/widgets/login_form_bloc_listener.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +46,7 @@ class LoginViewBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 32),
-                const LoginForm(),
+                const LoginFormBlocListener(),
                 const SizedBox(height: 32),
                 const Spacer(),
                 Align(

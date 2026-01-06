@@ -4,8 +4,11 @@ import 'package:fb_fitbody/core/widgets/custom_button.dart';
 import 'package:fb_fitbody/core/widgets/custom_outlined_button.dart';
 import 'package:fb_fitbody/core/widgets/custom_password_text_field.dart';
 import 'package:fb_fitbody/core/widgets/custom_text_field.dart';
+import 'package:fb_fitbody/features/auth/data/models/signup_request_body.dart';
+import 'package:fb_fitbody/features/auth/presentation/cubits/signup_cubit/signup_cubit.dart';
 import 'package:fb_fitbody/features/auth/presentation/widgets/custom_label.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SignUpForm extends StatefulWidget {
@@ -62,17 +65,30 @@ class _SignUpFormState extends State<SignUpForm> {
             hintText: 'Enter your password',
           ),
           const SizedBox(height: 24),
-          CustomButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {}
+          BlocBuilder<SignupCubit, SignupState>(
+            builder: (context, state) {
+              return CustomButton(
+                isLoading: state is SignupLoading,
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<SignupCubit>().signup(
+                      SignupRequestBody(
+                        name: _fullNameController.text,
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                      ),
+                    );
+                  }
+                },
+                text: 'Create Account',
+              );
             },
-            text: 'Create Account',
           ),
           const SizedBox(height: 16),
           SizedBox(
             width: double.infinity,
             child: CustomOutlinedButton(
-              text: 'Login with Google',
+              text: 'Signup with Google',
               onPressed: () {},
               icon: SvgPicture.asset(Assets.assetsImagesGoogle),
             ),

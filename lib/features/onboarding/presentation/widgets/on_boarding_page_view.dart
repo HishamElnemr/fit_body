@@ -16,14 +16,26 @@ class OnBoardingPageView extends StatelessWidget {
     return PageView(
       controller: _pageController,
       children: [
-        const OnBoardingPageItem(
-          leading: CustomLogoWidget(),
+        OnBoardingPageItem(
+          leading: const CustomLogoWidget(),
           title: 'Explore a wide range of products',
           description:
               'Explore a wide range of products at your fingertips. QuickMart offers an extensive collection to suit your needs.',
           image: Assets.assetsImages01OnlineShopping,
+          onPressed: () {
+            _pageController.nextPage(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          },
         ),
         OnBoardingPageItem(
+          onPressed: () {
+            _pageController.nextPage(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          },
           leading: GestureDetector(
             onTap: () {
               _pageController.previousPage(

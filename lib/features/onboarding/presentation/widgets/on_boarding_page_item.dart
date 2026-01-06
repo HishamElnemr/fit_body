@@ -1,10 +1,9 @@
 import 'package:fb_fitbody/core/constants/app_colors.dart';
 import 'package:fb_fitbody/core/constants/app_constants.dart';
-import 'package:fb_fitbody/core/theme/cubit/change_theme_cubit.dart';
+import 'package:fb_fitbody/core/routes/routes_name.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnBoardingPageItem extends StatelessWidget {
   const OnBoardingPageItem({
@@ -13,12 +12,14 @@ class OnBoardingPageItem extends StatelessWidget {
     required this.title,
     required this.description,
     required this.image,
+    required this.onPressed,
   });
 
   final Widget leading;
   final String title;
   final String description;
   final String image;
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +45,16 @@ class OnBoardingPageItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         leading,
-                        Text(
-                          'Skip for now',
-                          style: AppStyles.body2Medium14(
-                            context,
-                          ).copyWith(color: AppColors.cyan),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, RoutesName.signUp);
+                          },
+                          child: Text(
+                            'Skip for now',
+                            style: AppStyles.body2Medium14(
+                              context,
+                            ).copyWith(color: AppColors.cyan),
+                          ),
                         ),
                       ],
                     ),
@@ -81,12 +87,7 @@ class OnBoardingPageItem extends StatelessWidget {
                   ).copyWith(color: AppColors.lightGrey150),
                 ),
                 const SizedBox(height: 24),
-                CustomButton(
-                  text: 'Next',
-                  onPressed: () {
-                    context.read<ChangeThemeCubit>().toggleTheme();
-                  },
-                ),
+                CustomButton(text: 'Next', onPressed:onPressed ),
               ],
             ),
           ),

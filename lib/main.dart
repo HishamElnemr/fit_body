@@ -1,5 +1,6 @@
 import 'package:fb_fitbody/core/routes/app_routes.dart';
 import 'package:fb_fitbody/core/routes/routes_name.dart';
+import 'package:fb_fitbody/core/services/getit_services.dart';
 import 'package:fb_fitbody/core/theme/app_theme.dart';
 import 'package:fb_fitbody/core/theme/cubit/change_theme_cubit.dart';
 import 'package:fb_fitbody/core/theme/cubit/change_theme_state.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
+  setup();
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefs.init();
   runApp(const QuickMart());

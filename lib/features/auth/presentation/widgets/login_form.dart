@@ -5,8 +5,11 @@ import 'package:fb_fitbody/core/widgets/custom_button.dart';
 import 'package:fb_fitbody/core/widgets/custom_outlined_button.dart';
 import 'package:fb_fitbody/core/widgets/custom_password_text_field.dart';
 import 'package:fb_fitbody/core/widgets/custom_text_field.dart';
+import 'package:fb_fitbody/features/auth/data/models/login_request_body.dart';
+import 'package:fb_fitbody/features/auth/presentation/cubits/login_cubit/login_cubit.dart';
 import 'package:fb_fitbody/features/auth/presentation/widgets/custom_label.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class LoginForm extends StatefulWidget {
@@ -62,13 +65,23 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ),
           const SizedBox(height: 24),
-          CustomButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                // Handle login logic here
-              }
+          BlocBuilder<LoginCubit, LoginState>(
+            builder: (context, state) {
+              return CustomButton(
+                isLoading: state is LoginLoading,
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    context.read<LoginCubit>().login(
+                      LoginRequestBody(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                      ),
+                    );
+                  }
+                },
+                text: 'Login',
+              );
             },
-            text: 'Login',
           ),
           const SizedBox(height: 16),
           SizedBox(
