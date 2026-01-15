@@ -17,6 +17,7 @@ class AppTheme {
       surface: AppColors.cyan50,
       onSecondary: AppColors.black,
       onTertiary: AppColors.lightGrey50,
+      primaryFixed: AppColors.white,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -37,9 +38,10 @@ class AppTheme {
     ),
     colorScheme: const ColorScheme.dark(
       onPrimary: AppColors.cyan,
-      surface: AppColors.darkCyan50,
       onSecondary: AppColors.white,
       onTertiary: AppColors.darkGrey50,
+      surface: AppColors.darkCyan50,
+      primaryFixed: AppColors.black,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

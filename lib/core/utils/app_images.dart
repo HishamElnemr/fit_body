@@ -18,6 +18,10 @@ class Assets {
   /// Assets/images/arrow_left.svg
   static const String assetsImagesArrowLeft = "Assets/images/arrow_left.svg";
 
+  /// Assets for assetsImagesCategoryIcon
+  /// Assets/images/category_icon.svg
+  static const String assetsImagesCategoryIcon = "Assets/images/category_icon.svg";
+
   /// Assets for assetsImagesEye
   /// Assets/images/eye.svg
   static const String assetsImagesEye = "Assets/images/eye.svg";
@@ -38,8 +42,12 @@ class Assets {
   /// Assets/images/icon.svg
   static const String assetsImagesIcon = "Assets/images/icon.svg";
 
+  /// Assets for assetsImagesLivingRoomModernStyle3dScenesInteriorDesign145
+  /// Assets/images/living-room-modern-style-3d-scenes-interior-design-145.webp
+  static const String assetsImagesLivingRoomModernStyle3dScenesInteriorDesign145 = "Assets/images/living-room-modern-style-3d-scenes-interior-design-145.webp";
+
   /// Assets for assetsImagesSearchNormal
-  /// Assets/images/search-normal.svg
-  static const String assetsImagesSearchNormal = "Assets/images/search-normal.svg";
+  /// Assets/images/search_normal.svg
+  static const String assetsImagesSearchNormal = "Assets/images/search_normal.svg";
 }
 
