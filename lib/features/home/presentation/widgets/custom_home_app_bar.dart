@@ -12,7 +12,9 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      surfaceTintColor: Colors.transparent,
+      elevation: 0,
       automaticallyImplyLeading: false,
       titleSpacing: kHorizontalPadding,
       title: const CustomLogoWidget(),
