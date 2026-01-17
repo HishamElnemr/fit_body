@@ -16,7 +16,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, RoutesName.home);
+      Navigator.pushReplacementNamed(context, RoutesName.layoutView);
     });
   }
 
