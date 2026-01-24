@@ -1,12 +1,14 @@
 import 'package:fb_fitbody/core/constants/app_colors.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/core/widgets/custom_cached_network_image.dart';
+import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductWidget extends StatelessWidget {
-  const ProductWidget({super.key});
-
+  const ProductWidget({super.key, required this.productDetailsEntity});
+  final ProductDetailsEntity productDetailsEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,19 +16,12 @@ class ProductWidget extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Container(
+            CustomCachedNetworkImage(
+              imageUrl: productDetailsEntity.thumbnail,
               width: 250,
               height: 140,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24),
-                image: const DecorationImage(
-                  image: AssetImage(
-                    Assets
-                        .assetsImagesLivingRoomModernStyle3dScenesInteriorDesign145,
-                  ),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              borderRadius: 16,
+              fit: BoxFit.cover,
             ),
             Positioned(
               top: 6,
@@ -56,7 +51,7 @@ class ProductWidget extends StatelessWidget {
             Text(
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              'Tag1 , Tag2 , Tag3',
+              productDetailsEntity.tags.join(', '),
               style: AppStyles.overlineRegular10(context),
             ),
           ],
@@ -65,7 +60,7 @@ class ProductWidget extends StatelessWidget {
         Text(
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          'Product Name',
+          productDetailsEntity.title,
           style: AppStyles.body2Medium14(context),
         ),
         Row(
@@ -74,13 +69,13 @@ class ProductWidget extends StatelessWidget {
             Text(
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              '\$15',
+              '\$${productDetailsEntity.price}',
               style: AppStyles.captionSemiBold12(context),
             ),
             Text(
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              '\$10',
+              '\$${productDetailsEntity.discountPercentage}',
               style: AppStyles.captionSemiBold12(context).copyWith(
                 color: AppColors.grey100,
                 decoration: TextDecoration.lineThrough,
@@ -95,7 +90,7 @@ class ProductWidget extends StatelessWidget {
             Text(
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              '4.5',
+              '${productDetailsEntity.rating}',
               style: AppStyles.captionRegular12(context),
             ),
           ],

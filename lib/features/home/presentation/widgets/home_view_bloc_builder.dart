@@ -14,7 +14,7 @@ class HomeViewBlocBuilder extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
         if (state is GetProductsSuccess) {
-          return const HomeViewBody();
+          return HomeViewBody(productEntity: state.productEntity);
         }
         if (state is GetProductsFailure) {
           return Center(child: Text(state.errMessage));
