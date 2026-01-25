@@ -22,4 +22,22 @@ class ProductRepoImplementation implements ProductRepo {
       }
     }
   }
+
+  Future<Either<ApiProductErrors, ProductEntity>>
+  getProductsByDiscount() async {
+    try {
+      final response = await getProductsServices.getProducts(
+        sortBy: 'discountPercentage',
+        order: 'desc',
+        limit: 5,
+      );
+      return right(response.toEntity());
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

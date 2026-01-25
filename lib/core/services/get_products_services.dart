@@ -10,5 +10,9 @@ abstract class GetProductsServices {
   factory GetProductsServices(Dio dio) = _GetProductsServices;
 
   @GET('products')
-  Future<ProductModel> getProducts();
+  Future<ProductModel> getProducts({
+    @Query('sortBy') String? sortBy,
+    @Query('order') String? order,
+    @Query('limit') int? limit,
+  });
 }

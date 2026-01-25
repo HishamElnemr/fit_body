@@ -5,4 +5,6 @@ import 'package:fb_fitbody/features/product/domain/entities/product_entity.dart'
 abstract class ProductRepo 
 {
     Future<Either<ApiProductErrors, ProductEntity>> getProducts();
+    Future<Either<ApiProductErrors, ProductEntity>> getProductsByDiscount();
+
 }

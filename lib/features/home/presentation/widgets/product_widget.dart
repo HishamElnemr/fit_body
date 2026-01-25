@@ -75,11 +75,10 @@ class ProductWidget extends StatelessWidget {
             Text(
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              '\$${productDetailsEntity.discountPercentage}',
-              style: AppStyles.captionSemiBold12(context).copyWith(
-                color: AppColors.grey100,
-                decoration: TextDecoration.lineThrough,
-              ),
+              '${productDetailsEntity.discountPercentage.round()} % OFF',
+              style: AppStyles.captionSemiBold12(
+                context,
+              ).copyWith(color: AppColors.grey100),
             ),
           ],
         ),

@@ -22,9 +22,18 @@ class _GetProductsServices implements GetProductsServices {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ProductModel> getProducts() async {
+  Future<ProductModel> getProducts({
+    String? sortBy,
+    String? order,
+    int? limit,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'sortBy': sortBy,
+      r'order': order,
+      r'limit': limit,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<ProductModel>(

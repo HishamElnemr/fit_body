@@ -1,8 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:fb_fitbody/core/constants/app_colors.dart';
 import 'package:fb_fitbody/core/constants/app_constants.dart';
-import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
 
 class PromotionalBanner extends StatelessWidget {
@@ -10,9 +11,11 @@ class PromotionalBanner extends StatelessWidget {
     super.key,
     required this.dotsCount,
     required this.position,
+    required this.productDetailsEntity,
   });
   final int dotsCount;
   final double position;
+  final ProductDetailsEntity productDetailsEntity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,11 +27,10 @@ class PromotionalBanner extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 150,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(
-                    Assets
-                        .assetsImagesLivingRoomModernStyle3dScenesInteriorDesign145,
+                  image: CachedNetworkImageProvider(
+                    productDetailsEntity.images[0],
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -62,7 +64,7 @@ class PromotionalBanner extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        '30% OFF',
+                        '${productDetailsEntity.discountPercentage.round()}% OFF ',
                         style: AppStyles.button1SemiBold16(context).copyWith(
                           color: Theme.of(context).colorScheme.primaryFixed,
                         ),
@@ -70,7 +72,9 @@ class PromotionalBanner extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'On Headphones',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      productDetailsEntity.title,
                       style: AppStyles.captionRegular12(context).copyWith(
                         color: Theme.of(context).colorScheme.primaryFixed,
                       ),
