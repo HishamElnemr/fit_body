@@ -37,35 +37,16 @@ class _PromotionalBannerPageViewState extends State<PromotionalBannerPageView> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
+    return PageView.builder(
       controller: _pageController,
-      children: [
-        PromotionalBanner(
+      itemCount: widget.productDetailsEntity.length,
+      itemBuilder: (context, index) {
+        return PromotionalBanner(
           dotsCount: widget.productDetailsEntity.length,
           position: _currentPage.toDouble(),
-          productDetailsEntity: widget.productDetailsEntity[0],
-        ),
-        PromotionalBanner(
-          dotsCount: widget.productDetailsEntity.length,
-          position: _currentPage.toDouble(),
-          productDetailsEntity: widget.productDetailsEntity[1],
-        ),
-        PromotionalBanner(
-          dotsCount: widget.productDetailsEntity.length,
-          position: _currentPage.toDouble(),
-          productDetailsEntity: widget.productDetailsEntity[2],
-        ),
-        PromotionalBanner(
-          dotsCount: widget.productDetailsEntity.length,
-          position: _currentPage.toDouble(),
-          productDetailsEntity: widget.productDetailsEntity[3],
-        ),
-        PromotionalBanner(
-          dotsCount: widget.productDetailsEntity.length,
-          position: _currentPage.toDouble(),
-          productDetailsEntity: widget.productDetailsEntity[4],
-        ),
-      ],
+          productDetailsEntity: widget.productDetailsEntity[index],
+        );
+      },
     );
   }
 }

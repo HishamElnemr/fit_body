@@ -42,8 +42,8 @@ class PromotionalBanner extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.white.withOpacity(.5),
-                    AppColors.black.withOpacity(.5),
+                    Theme.of(context).colorScheme.primaryFixed.withOpacity(.5),
+                    Theme.of(context).colorScheme.onSecondary.withOpacity(.5),
                   ],
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,

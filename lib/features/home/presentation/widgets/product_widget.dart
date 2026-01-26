@@ -71,6 +71,7 @@ class ProductWidget extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               '\$${productDetailsEntity.price}',
               style: AppStyles.captionSemiBold12(context),
+              
             ),
             Text(
               maxLines: 1,
