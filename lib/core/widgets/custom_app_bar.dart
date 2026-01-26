@@ -1,14 +1,12 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
-import 'package:fb_fitbody/core/theme/cubit/change_theme_cubit.dart';
-import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/widgets/custom_logo_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomHomeAppBar({super.key});
-
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key, required this.icon, required this.onTap});
+  final String icon;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -22,12 +20,12 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.only(right: kHorizontalPadding),
           child: GestureDetector(
-            onTap: () {
-              context.read<ChangeThemeCubit>().toggleTheme();
-            },
+            onTap: onTap,
             child: SvgPicture.asset(
-              Assets.assetsImagesSearchNormal,
+              icon,
               color: Theme.of(context).colorScheme.onSecondary,
+              height: 32,
+              width: 32,
             ),
           ),
         ),
