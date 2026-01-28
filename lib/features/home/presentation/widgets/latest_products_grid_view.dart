@@ -1,4 +1,4 @@
-import 'package:fb_fitbody/features/home/presentation/widgets/product_widget.dart';
+import 'package:fb_fitbody/core/widgets/product_widget.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
 

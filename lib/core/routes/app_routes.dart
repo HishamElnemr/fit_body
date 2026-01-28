@@ -34,7 +34,9 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const SearchView());
 
       case RoutesName.searchResult:
-        return MaterialPageRoute(builder: (context) => const SearchResultView());
+        return MaterialPageRoute(
+          builder: (context) => const SearchResultView(),
+        );
 
       default:
         return MaterialPageRoute(

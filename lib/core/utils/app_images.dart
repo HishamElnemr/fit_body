@@ -34,6 +34,14 @@ class Assets {
   /// Assets/images/category_inactive.svg
   static const String assetsImagesCategoryInactive = "Assets/images/category_inactive.svg";
 
+  /// Assets for assetsImagesCheckBox
+  /// Assets/images/check-box.svg
+  static const String assetsImagesCheckBox = "Assets/images/check-box.svg";
+
+  /// Assets for assetsImagesCheckBoxActive
+  /// Assets/images/check-box-active.svg
+  static const String assetsImagesCheckBoxActive = "Assets/images/check-box-active.svg";
+
   /// Assets for assetsImagesEye
   /// Assets/images/eye.svg
   static const String assetsImagesEye = "Assets/images/eye.svg";

@@ -11,7 +11,7 @@ class SearchBlocBuilder extends StatelessWidget {
     return BlocListener<SearchForProductCubit, SearchForProductState>(
       listener: (context, state) {
         if (state is SearchForProductSuccess) {
-          Navigator.pushNamed(context, RoutesName.searchResult);
+          Navigator.pushNamed(context, RoutesName.searchResult ,);
         } else if (state is SearchForProductFailure) {
           ScaffoldMessenger.of(
             context,
