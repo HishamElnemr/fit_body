@@ -5,6 +5,8 @@ import 'package:fb_fitbody/features/auth/data/repositories/auth_repo_implementat
 import 'package:fb_fitbody/features/auth/domain/repositories/auth_repo.dart';
 import 'package:fb_fitbody/features/product/data/repositories/product_repo_implementation.dart';
 import 'package:fb_fitbody/features/product/domain/repositories/product_repo.dart';
+import 'package:fb_fitbody/features/search/data/repositories/search_for_products_repo_implementation.dart';
+import 'package:fb_fitbody/features/search/domain/repositories/search_for_products_repo.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -21,5 +23,8 @@ void setup() {
     ProductRepoImplementation(
       getProductsServices: getIt<GetProductsServices>(),
     ),
+  );
+  getIt.registerSingleton<SearchForProductsRepo>(
+    SearchForProductsRepoImplementation(getIt<GetProductsServices>()),
   );
 }

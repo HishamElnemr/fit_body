@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TrendingWidget extends StatelessWidget {
-  const TrendingWidget({
-    super.key,
-  });
+  const TrendingWidget({super.key, required this.text});
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class TrendingWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Laptop', style: AppStyles.body2Medium14(context)),
+            Text(text, style: AppStyles.body2Medium14(context)),
             SvgPicture.asset(Assets.assetsImagesSend),
           ],
         ),

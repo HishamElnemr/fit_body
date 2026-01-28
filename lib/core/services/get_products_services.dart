@@ -15,4 +15,9 @@ abstract class GetProductsServices {
     @Query('order') String? order,
     @Query('limit') int? limit,
   });
+
+  @GET('products/search')
+  Future<ProductModel> searchProducts(
+    @Query('q') String query,
+  );
 }
