@@ -35,6 +35,7 @@ class AppRoutes {
 
       case RoutesName.searchResult:
         return MaterialPageRoute(
+          settings: settings,
           builder: (context) => const SearchResultView(),
         );
 

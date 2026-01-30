@@ -10,7 +10,10 @@ class SearchForProductCubit extends Cubit<SearchForProductState> {
     : super(SearchForProductInitial());
   final SearchForProductsRepo searchForProductsRepo;
 
+  String currentQuery = '';
+
   Future<void> searchForProducts({required String query}) async {
+    currentQuery = query;
     emit(SearchForProductLoading());
     final result = await searchForProductsRepo.searchForProducts(query);
     result.fold(
