@@ -75,7 +75,11 @@ class _SearchTextFieldState extends State<SearchTextField> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         child: GestureDetector(
           onTap: () {
-            showBottomSheet(
+            showModalBottomSheet(
+              barrierColor: Theme.of(
+                context,
+              ).colorScheme.onSecondary.withOpacity(.6),
+              isScrollControlled: true,
               elevation: 5,
               context: context,
               builder: (context) {

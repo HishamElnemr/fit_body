@@ -1,4 +1,5 @@
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/core/widgets/products_grid_skeleton.dart';
 import 'package:fb_fitbody/features/search/presentation/cubit/search_for_product_cubit.dart';
 import 'package:fb_fitbody/features/search/presentation/widgets/search_result_grid_view.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +30,7 @@ class _LoadingState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverToBoxAdapter(
-      child: Padding(
-        padding: EdgeInsets.all(32.0),
-        child: Center(child: CircularProgressIndicator()),
-      ),
-    );
+    return const SliverToBoxAdapter(child: ProductsGridSkeleton());
   }
 }
 

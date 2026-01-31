@@ -36,7 +36,6 @@ class SearchViewBody extends StatelessWidget {
             ],
           ),
         ),
-        // BlocBuilder to show loading and handle navigation
         const SearchBlocConsumer(),
       ],
     );

@@ -1,6 +1,6 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/features/home/presentation/widgets/categories_skeleton.dart';
-import 'package:fb_fitbody/features/home/presentation/widgets/products_grid_skeleton.dart';
+import 'package:fb_fitbody/core/widgets/products_grid_skeleton.dart';
 import 'package:fb_fitbody/features/home/presentation/widgets/promotional_banner_skeleton.dart';
 import 'package:fb_fitbody/features/home/presentation/widgets/section_header.dart';
 import 'package:flutter/material.dart';

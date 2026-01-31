@@ -103,7 +103,11 @@ class _FilterIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        showBottomSheet(
+        showModalBottomSheet(
+          barrierColor: Theme.of(
+            context,
+          ).colorScheme.onSecondary.withOpacity(.6),
+          isScrollControlled: true,
           elevation: 5,
           context: context,
           builder: (context) {

@@ -1,6 +1,6 @@
 import 'package:fb_fitbody/features/home/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:fb_fitbody/features/home/presentation/widgets/latest_products_grid_view.dart';
-import 'package:fb_fitbody/features/home/presentation/widgets/products_grid_skeleton.dart';
+import 'package:fb_fitbody/core/widgets/products_grid_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
