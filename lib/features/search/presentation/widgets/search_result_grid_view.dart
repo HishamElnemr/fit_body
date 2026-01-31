@@ -16,7 +16,6 @@ class SearchResultGridView extends StatelessWidget {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
           childAspectRatio: 0.75,
-
         ),
         itemCount: products.length,
         itemBuilder: (context, index) {

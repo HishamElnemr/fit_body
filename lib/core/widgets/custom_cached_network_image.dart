@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage({
@@ -30,13 +32,24 @@ class CustomCachedNetworkImage extends StatelessWidget {
           width: width,
           height: height,
           color: Colors.grey[200],
-          child: const Center(child: CircularProgressIndicator()),
+          child: Skeletonizer(
+            enabled: true,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.asset(
+                Assets.assetsImages01OnlineShopping,
+                width: width,
+                height: height,
+                fit: fit,
+              ),
+            ),
+          ),
         ),
         errorWidget: (context, url, error) => Container(
           width: width,
           height: height,
           color: Colors.grey[200],
-          child: const Icon(Icons.error),
+          child: const Skeletonizer(enabled: true, child: Icon(Icons.error)),
         ),
       ),
     );

@@ -11,91 +11,103 @@ class ProductWidget extends StatelessWidget {
   final ProductDetailsEntity productDetailsEntity;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomCachedNetworkImage(
-              imageUrl: productDetailsEntity.thumbnail,
-              width: 250,
-              height: 140,
-              borderRadius: 16,
-              fit: BoxFit.cover,
-            ),
-            Positioned(
-              top: 6,
-              right: 6,
-              child: Container(
-                padding: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.onSecondary,
-                  borderRadius: BorderRadius.circular(100),
+            Stack(
+              children: [
+                CustomCachedNetworkImage(
+                  imageUrl: productDetailsEntity.thumbnail,
+                  width: constraints.maxWidth,
+                  height: constraints.maxWidth * 0.75,
+                  borderRadius: 16,
+                  fit: BoxFit.cover,
                 ),
-                child: SvgPicture.asset(
-                  Assets.assetsImagesFavorite,
-                  color: Theme.of(context).colorScheme.primaryFixed,
+                Positioned(
+                  top: 6,
+                  right: 6,
+                  child: Container(
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onSecondary,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: SvgPicture.asset(
+                      Assets.assetsImagesFavorite,
+                      color: Theme.of(context).colorScheme.primaryFixed,
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        Row(
-          children: [
-            SvgPicture.asset(
-              Assets.assetsImagesTagIcon,
-              color: AppColors.grey100,
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                SvgPicture.asset(
+                  Assets.assetsImagesTagIcon,
+                  color: AppColors.grey100,
+                ),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    productDetailsEntity.tags.join(', '),
+                    style: AppStyles.overlineRegular10(context),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 8),
+            const SizedBox(height: 8),
             Text(
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              productDetailsEntity.tags.join(', '),
-              style: AppStyles.overlineRegular10(context),
+              productDetailsEntity.title,
+              style: AppStyles.body2Medium14(context),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    '\$${productDetailsEntity.price}',
+                    style: AppStyles.captionSemiBold12(context),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    '${productDetailsEntity.discountPercentage.round()} % OFF',
+                    style: AppStyles.captionSemiBold12(
+                      context,
+                    ).copyWith(color: AppColors.grey100),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                SvgPicture.asset(Assets.assetsImagesRating),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    '${productDetailsEntity.rating}',
+                    style: AppStyles.captionRegular12(context),
+                  ),
+                ),
+              ],
             ),
           ],
-        ),
-        const SizedBox(height: 8),
-        Text(
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          productDetailsEntity.title,
-          style: AppStyles.body2Medium14(context),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              '\$${productDetailsEntity.price}',
-              style: AppStyles.captionSemiBold12(context),
-              
-            ),
-            Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              '${productDetailsEntity.discountPercentage.round()} % OFF',
-              style: AppStyles.captionSemiBold12(
-                context,
-              ).copyWith(color: AppColors.grey100),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            SvgPicture.asset(Assets.assetsImagesRating),
-            const SizedBox(width: 8),
-            Text(
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              '${productDetailsEntity.rating}',
-              style: AppStyles.captionRegular12(context),
-            ),
-          ],
-        ),
-      ],
+        );
+      },
     );
   }
 }

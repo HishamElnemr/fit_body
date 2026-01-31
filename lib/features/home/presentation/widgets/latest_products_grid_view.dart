@@ -3,10 +3,7 @@ import 'package:fb_fitbody/features/product/domain/entities/product_details_enti
 import 'package:flutter/material.dart';
 
 class LatestProductsGridView extends StatelessWidget {
-  const LatestProductsGridView({
-    super.key,
-    required this.products,
-  });
+  const LatestProductsGridView({super.key, required this.products});
   final List<ProductDetailsEntity> products;
 
   @override

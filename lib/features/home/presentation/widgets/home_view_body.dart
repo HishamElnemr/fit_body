@@ -34,7 +34,8 @@ class HomeViewBody extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
             child: LatestProductsBlocBuilder(),
-          ),
+          )
+          
         ],
       ),
     );

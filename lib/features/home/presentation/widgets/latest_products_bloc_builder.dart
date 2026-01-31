@@ -1,5 +1,6 @@
 import 'package:fb_fitbody/features/home/presentation/cubits/get_products_cubit/get_products_cubit.dart';
 import 'package:fb_fitbody/features/home/presentation/widgets/latest_products_grid_view.dart';
+import 'package:fb_fitbody/features/home/presentation/widgets/products_grid_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +12,7 @@ class LatestProductsBlocBuilder extends StatelessWidget {
     return BlocBuilder<GetProductsCubit, GetProductsState>(
       builder: (context, state) {
         if (state is GetProductsLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const ProductsGridSkeleton();
         }
         if (state is GetProductsSuccess) {
           return LatestProductsGridView(products: state.productEntity.products);
