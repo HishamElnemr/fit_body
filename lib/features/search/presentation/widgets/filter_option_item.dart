@@ -3,17 +3,18 @@ import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomCheckbox extends StatefulWidget {
-  const CustomCheckbox({super.key, required this.text, required this.onTap});
+class FilterOptionItem extends StatelessWidget {
+  const FilterOptionItem({
+    super.key,
+    required this.text,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   final String text;
-  final void Function() onTap;
-  @override
-  State<CustomCheckbox> createState() => _CustomCheckboxState();
-}
+  final bool isSelected;
+  final VoidCallback onTap;
 
-class _CustomCheckboxState extends State<CustomCheckbox> {
-  bool isActive = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,23 +26,21 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
             mainAxisSize: MainAxisSize.min,
             children: [
               GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isActive = !isActive;
-                  });
-                  widget.onTap();
-                },
+                onTap: onTap,
                 child: SvgPicture.asset(
-                  isActive
+                  isSelected
                       ? Assets.assetsImagesCheckBoxActive
                       : Assets.assetsImagesCheckBox,
                   width: 32,
                   height: 32,
-                  color: Theme.of(context).colorScheme.onSecondary,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.onSecondary,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
               const SizedBox(width: 12),
-              Text(widget.text, style: AppStyles.body2Medium14(context)),
+              Text(text, style: AppStyles.body2Medium14(context)),
             ],
           ),
         ),

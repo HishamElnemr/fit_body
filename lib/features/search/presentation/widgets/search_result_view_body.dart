@@ -16,7 +16,6 @@ class SearchResultViewBody extends StatefulWidget {
 class _SearchResultViewBodyState extends State<SearchResultViewBody> {
   late final TextEditingController _controller;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   void initState() {
     super.initState();
@@ -37,6 +36,7 @@ class _SearchResultViewBodyState extends State<SearchResultViewBody> {
           controller: _controller,
           onSearch: _search,
           formKey: _formKey,
+          
         ),
         const SearchResultsContent(),
       ],
@@ -47,6 +47,7 @@ class _SearchResultViewBodyState extends State<SearchResultViewBody> {
     if (_formKey.currentState!.validate()) {
       context.read<SearchForProductCubit>().searchForProducts(
         query: _controller.text,
+        
       );
     }
   }

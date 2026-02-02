@@ -11,9 +11,15 @@ class SearchForProductsRepoImplementation implements SearchForProductsRepo {
   @override
   Future<Either<ApiProductErrors, ProductEntity>> searchForProducts(
     String query,
+    String? sortBy,
+    String? order,
   ) async {
     try {
-      final response = await getProductsServices.searchProducts(query);
+      final response = await getProductsServices.searchProducts(
+        query: query,
+        sortBy: sortBy,
+        order: order,
+      );
       return right(response.toEntity());
     } catch (e) {
       if (e is DioException) {

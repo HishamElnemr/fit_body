@@ -15,6 +15,9 @@ class SearchResultsContent extends StatelessWidget {
         if (state is SearchForProductLoading) {
           return const _LoadingState();
         } else if (state is SearchForProductSuccess) {
+          if (state.productEntity.products.isEmpty) {
+            return const _NoResultsState();
+          }
           return SearchResultGridView(products: state.productEntity.products);
         } else if (state is SearchForProductFailure) {
           return _ErrorState(errorMessage: state.errorMessage);
@@ -47,6 +50,46 @@ class _ErrorState extends StatelessWidget {
         child: Text(
           'Error: $errorMessage',
           style: AppStyles.body2Medium14(context).copyWith(color: Colors.red),
+        ),
+      ),
+    );
+  }
+}
+
+class _NoResultsState extends StatelessWidget {
+  const _NoResultsState();
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverFillRemaining(
+      hasScrollBody: false,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.search_off_rounded,
+                size: 80,
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSecondary.withValues(alpha: 0.5),
+              ),
+              const SizedBox(height: 16),
+              Text('No Results Found', style: AppStyles.body1Medium16(context)),
+              const SizedBox(height: 8),
+              Text(
+                'Try searching with different keywords',
+                style: AppStyles.captionRegular12(context).copyWith(
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSecondary.withValues(alpha: 0.7),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
         ),
       ),
     );

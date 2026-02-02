@@ -17,7 +17,9 @@ abstract class GetProductsServices {
   });
 
   @GET('products/search')
-  Future<ProductModel> searchProducts(
+  Future<ProductModel> searchProducts({
     @Query('q') String query,
-  );
+    @Query('sortBy') String? sortBy,
+    @Query('order') String? order,
+  });
 }

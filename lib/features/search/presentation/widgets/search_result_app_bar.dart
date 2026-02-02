@@ -1,5 +1,6 @@
 import 'package:fb_fitbody/core/utils/app_images.dart';
-import 'package:fb_fitbody/features/search/presentation/widgets/custom_bottom_sheet.dart';
+import 'package:fb_fitbody/features/search/presentation/widgets/filter_icon_button.dart';
+import 'package:fb_fitbody/features/search/presentation/widgets/search_icon_button.dart';
 import 'package:fb_fitbody/features/search/presentation/widgets/search_result_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -46,9 +47,9 @@ class SearchResultAppBar extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
-            _SearchIconButton(onTap: onSearch),
+            searchIconButton(onTap: onSearch),
             const SizedBox(width: 16),
-            _FilterIconButton(),
+            const FilterIconButton(),
           ],
         ),
       ),
@@ -65,58 +66,6 @@ class _BackButton extends StatelessWidget {
       },
       child: SvgPicture.asset(
         Assets.assetsImagesArrowLeft,
-        colorFilter: ColorFilter.mode(
-          Theme.of(context).colorScheme.onSecondary,
-          BlendMode.srcIn,
-        ),
-        width: 24,
-        height: 24,
-      ),
-    );
-  }
-}
-
-class _SearchIconButton extends StatelessWidget {
-  const _SearchIconButton({required this.onTap});
-
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: SvgPicture.asset(
-        Assets.assetsImagesSearchNormal,
-        colorFilter: ColorFilter.mode(
-          Theme.of(context).colorScheme.onSecondary,
-          BlendMode.srcIn,
-        ),
-        width: 24,
-        height: 24,
-      ),
-    );
-  }
-}
-
-class _FilterIconButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        showModalBottomSheet(
-          barrierColor: Theme.of(
-            context,
-          ).colorScheme.onSecondary.withOpacity(.6),
-          isScrollControlled: true,
-          elevation: 5,
-          context: context,
-          builder: (context) {
-            return const CustomBottomSheet();
-          },
-        );
-      },
-      child: SvgPicture.asset(
-        Assets.assetsImagesFilter,
         colorFilter: ColorFilter.mode(
           Theme.of(context).colorScheme.onSecondary,
           BlendMode.srcIn,

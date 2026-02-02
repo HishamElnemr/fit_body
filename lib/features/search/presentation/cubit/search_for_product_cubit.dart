@@ -12,10 +12,18 @@ class SearchForProductCubit extends Cubit<SearchForProductState> {
 
   String currentQuery = '';
 
-  Future<void> searchForProducts({required String query}) async {
+  Future<void> searchForProducts({
+    required String query,
+    String? sortBy,
+    String? order,
+  }) async {
     currentQuery = query;
     emit(SearchForProductLoading());
-    final result = await searchForProductsRepo.searchForProducts(query);
+    final result = await searchForProductsRepo.searchForProducts(
+      query,
+      sortBy,
+      order,
+    );
     result.fold(
       (failure) => emit(SearchForProductFailure(failure.errMessage)),
       (productEntity) => emit(SearchForProductSuccess(productEntity)),
