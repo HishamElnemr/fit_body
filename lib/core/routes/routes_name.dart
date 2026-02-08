@@ -7,4 +7,5 @@ class RoutesName {
   static const String home = 'home_view';
   static const String search = 'search_view';
   static const String searchResult = 'search_result_view';
+  static const String details = 'details_view';
 }
