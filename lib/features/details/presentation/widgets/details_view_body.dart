@@ -1,3 +1,4 @@
+import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/details_app_bar.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_details_widget.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
@@ -29,9 +30,7 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
   }
 
   void _scrollListener() {
-    // The threshold should be expandedHeight - collapsedHeight (ToolbarHeight)
-    // We used 0.4 * screen height for expanded height.
-    final expandedHeight = MediaQuery.sizeOf(context).height * 0.4;
+    final expandedHeight = MediaQuery.sizeOf(context).height * 0.4 + 112;
     final collapsedHeight = kToolbarHeight;
     final threshold = expandedHeight - collapsedHeight;
 
@@ -51,8 +50,10 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
     return CustomScrollView(
       controller: _scrollController,
       slivers: [
-        DetailsAppBar(arguments: arguments, isScrolled: isScrolled),
-        const SliverToBoxAdapter(child: SizedBox(height: 24)),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(vertical: kHorizontalPadding),
+          sliver: DetailsAppBar(arguments: arguments, isScrolled: isScrolled),
+        ),
         SliverToBoxAdapter(child: ProductDetailsWidget(arguments: arguments)),
       ],
     );

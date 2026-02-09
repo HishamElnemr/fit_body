@@ -1,5 +1,7 @@
+import 'package:fb_fitbody/core/routes/routes_name.dart';
 import 'package:fb_fitbody/core/theme/cubit/change_theme_cubit.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
+import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_image_stack.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,18 @@ class DetailsAppBar extends StatelessWidget {
       elevation: 0,
       shape: isScrolled
           ? Border(
-              bottom: BorderSide(color: Theme.of(context).colorScheme.outline),
+              bottom: BorderSide(
+                color: Theme.of(context).colorScheme.onTertiary,
+              ),
+            )
+          : null,
+
+      title: isScrolled
+          ? Text(
+              arguments.title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppStyles.heading3Bold18(context),
             )
           : null,
       expandedHeight: MediaQuery.sizeOf(context).height * 0.4,
@@ -42,7 +55,9 @@ class DetailsAppBar extends StatelessWidget {
         _buildAppBarIcon(
           context,
           icon: Assets.assetsImagesSearchNormal,
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, RoutesName.search);
+          },
         ),
         const SizedBox(width: 12),
         _buildAppBarIcon(

@@ -4,6 +4,7 @@ import 'package:fb_fitbody/features/details/presentation/widgets/product_call_to
 import 'package:fb_fitbody/features/details/presentation/widgets/product_tags_row.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_title_price_row.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/quantity_selector.dart';
+import 'package:fb_fitbody/features/details/presentation/widgets/read_more_text.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/reviews_section.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +47,17 @@ class ProductDetailsWidget extends StatelessWidget {
             discountPercentage: arguments.discountPercentage,
           ),
           const SizedBox(height: 12),
-          Text(
-            arguments.description,
-            style: AppStyles.body2Regular14(
-              context,
-            ).copyWith(color: Theme.of(context).colorScheme.outline),
+          ReadMoreText(
+            text:
+                arguments.description +
+                arguments.description +
+                arguments.description +
+                arguments.description +
+                arguments.description +
+                arguments.description +
+                arguments.description +
+                arguments.description,
+           
           ),
           const SizedBox(height: 12),
           QuantitySelector(stockQuantity: arguments.stock),
