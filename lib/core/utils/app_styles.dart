@@ -97,6 +97,14 @@ abstract class AppStyles {
     letterSpacing: 0.005,
   );
 
+  static TextStyle body1SemiBold16(BuildContext context) => TextStyle(
+    fontSize: getResponsiveFontSize(context, fontSize: 16),
+    fontFamily: 'Plus Jakarta Sans',
+    fontWeight: FontWeight.w600,
+    height: 1.5,
+    letterSpacing: 0.005,
+  );
+
   static TextStyle body1Regular16(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context, fontSize: 16),
     fontFamily: 'Plus Jakarta Sans',

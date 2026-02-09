@@ -25,13 +25,14 @@ class _ProductImageStackState extends State<ProductImageStack> {
         Expanded(
           child: Stack(
             children: [
-              Container(
-                width: double.infinity,
-                child: CustomCachedNetworkImage(
-                  imageUrl: widget.images[selectedImageIndex],
+              Positioned.fill(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: CustomCachedNetworkImage(
+                    imageUrl: widget.images[selectedImageIndex],
+                  ),
                 ),
               ),
-              // Back arrow - top left
               Positioned(
                 top: 16,
                 left: 16,
@@ -45,7 +46,10 @@ class _ProductImageStackState extends State<ProductImageStack> {
                     ),
                     child: SvgPicture.asset(
                       Assets.assetsImagesArrowLeft,
-                      color: Theme.of(context).colorScheme.primaryFixed,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).colorScheme.primaryFixed,
+                        BlendMode.srcIn,
+                      ),
                       width: 32,
                       height: 32,
                     ),
@@ -66,7 +70,10 @@ class _ProductImageStackState extends State<ProductImageStack> {
                     ),
                     child: SvgPicture.asset(
                       Assets.assetsImagesFavorite,
-                      color: Theme.of(context).colorScheme.primaryFixed,
+                      colorFilter: ColorFilter.mode(
+                        Theme.of(context).colorScheme.primaryFixed,
+                        BlendMode.srcIn,
+                      ),
                       width: 32,
                       height: 32,
                     ),

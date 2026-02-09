@@ -18,6 +18,7 @@ class AppTheme {
       onSecondary: AppColors.black,
       onTertiary: AppColors.lightGrey50,
       primaryFixed: AppColors.white,
+      outline: AppColors.lightGrey150,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -42,6 +43,7 @@ class AppTheme {
       onTertiary: AppColors.darkGrey50,
       surface: AppColors.darkCyan50,
       primaryFixed: AppColors.black,
+      outline: AppColors.darkGrey150,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
