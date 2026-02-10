@@ -1,7 +1,6 @@
-import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/core/widgets/custom_check_box.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class FilterOptionItem extends StatelessWidget {
   const FilterOptionItem({
@@ -25,20 +24,7 @@ class FilterOptionItem extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              GestureDetector(
-                onTap: onTap,
-                child: SvgPicture.asset(
-                  isSelected
-                      ? Assets.assetsImagesCheckBoxActive
-                      : Assets.assetsImagesCheckBox,
-                  width: 32,
-                  height: 32,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.onSecondary,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ),
+              CustomCheckBox(onTap: onTap, isSelected: isSelected),
               const SizedBox(width: 12),
               Text(text, style: AppStyles.body2Medium14(context)),
             ],

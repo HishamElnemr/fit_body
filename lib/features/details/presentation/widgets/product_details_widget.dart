@@ -1,9 +1,9 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_call_to_action.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_tags_row.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_title_price_row.dart';
-import 'package:fb_fitbody/features/details/presentation/widgets/quantity_selector.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/read_more_text.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/reviews_section.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
@@ -59,7 +59,12 @@ class ProductDetailsWidget extends StatelessWidget {
                 arguments.description,
           ),
           const SizedBox(height: 12),
-          QuantitySelector(stockQuantity: arguments.stock),
+          Text('Quantity', style: AppStyles.captionSemiBold12(context)),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: 120,
+            child: QuantitySelector(stockQuantity: arguments.stock),
+          ),
           const SizedBox(height: 12),
           const ProductCallToAction(),
           const SizedBox(height: 24),

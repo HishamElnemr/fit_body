@@ -121,5 +121,9 @@ class Assets {
   /// Assets for assetsImagesTagIcon
   /// Assets/images/tag_icon.svg
   static const String assetsImagesTagIcon = "Assets/images/tag_icon.svg";
+
+  /// Assets for assetsImagesTrash
+  /// Assets/images/trash.svg
+  static const String assetsImagesTrash = "Assets/images/trash.svg";
 }
 
