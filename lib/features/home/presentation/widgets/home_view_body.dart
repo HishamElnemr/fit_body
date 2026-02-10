@@ -14,7 +14,7 @@ class HomeViewBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 24),
-          SizedBox(height: 150, child: PromotionalBannerBlocBuilder()),
+          SizedBox(height: 170, child: PromotionalBannerBlocBuilder()),
           SizedBox(height: 24),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
@@ -34,8 +34,7 @@ class HomeViewBody extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
             child: LatestProductsBlocBuilder(),
-          )
-          
+          ),
         ],
       ),
     );

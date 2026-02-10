@@ -1,3 +1,4 @@
+import 'package:fb_fitbody/features/cart/presentation/views/cart_view.dart';
 import 'package:fb_fitbody/features/home/presentation/views/home_view.dart';
 import 'package:fb_fitbody/features/layout/presentation/cubit/layout_cubit.dart';
 import 'package:fb_fitbody/features/layout/presentation/widgets/custom_bottom_navigation_bar.dart';
@@ -10,7 +11,7 @@ class LayoutView extends StatelessWidget {
   static const List<Widget> _screens = [
     HomeView(),
     Scaffold(body: Center(child: Text('Categories'))),
-    Scaffold(body: Center(child: Text('Cart'))),
+    CartView(),
     Scaffold(body: Center(child: Text('Wishlist'))),
     Scaffold(body: Center(child: Text('Profile'))),
   ];

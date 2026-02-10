@@ -1,6 +1,6 @@
 import 'package:fb_fitbody/features/home/presentation/cubits/get_products_with_discount_cubit/get_products_with_discount_cubit.dart';
 import 'package:fb_fitbody/features/home/presentation/widgets/promotional_banner_page_view.dart';
-import 'package:fb_fitbody/features/home/presentation/widgets/promotional_banner_skeleton.dart';
+import 'package:fb_fitbody/features/home/presentation/widgets/promotional_banner/promotional_banner_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

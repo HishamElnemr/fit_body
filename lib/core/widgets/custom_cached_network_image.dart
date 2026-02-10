@@ -31,7 +31,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
         placeholder: (context, url) => Container(
           width: width,
           height: height,
-          color: Colors.grey[200],
+          color: Theme.of(context).colorScheme.primaryFixed,
           child: Skeletonizer(
             enabled: true,
             child: ClipRRect(
@@ -48,7 +48,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
         errorWidget: (context, url, error) => Container(
           width: width,
           height: height,
-          color: Colors.grey[200],
+          color: Theme.of(context).colorScheme.primaryFixed,
           child: const Skeletonizer(enabled: true, child: Icon(Icons.error)),
         ),
       ),

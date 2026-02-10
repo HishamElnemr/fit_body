@@ -57,7 +57,6 @@ class ProductDetailsWidget extends StatelessWidget {
                 arguments.description +
                 arguments.description +
                 arguments.description,
-           
           ),
           const SizedBox(height: 12),
           QuantitySelector(stockQuantity: arguments.stock),

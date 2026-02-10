@@ -19,17 +19,13 @@ class _ProductImageStackState extends State<ProductImageStack> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: CustomCachedNetworkImage(
-                    imageUrl: widget.images[selectedImageIndex],
-                  ),
-                ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: CustomCachedNetworkImage(
+                imageUrl: widget.images[selectedImageIndex],
               ),
-            ],
+            ),
           ),
         ),
         const SizedBox(height: 16),

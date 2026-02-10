@@ -16,7 +16,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-      color: Theme.of(context).colorScheme.primaryFixed,
+        color: Theme.of(context).colorScheme.primaryFixed,
         border: Border(
           top: BorderSide(
             color: Theme.of(context).colorScheme.onTertiary,
@@ -30,6 +30,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         elevation: 0,
+        backgroundColor: Theme.of(context).colorScheme.primaryFixed,
         onTap: onTap,
         items: const [
           BottomNavigationBarItem(
