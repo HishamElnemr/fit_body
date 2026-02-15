@@ -5,6 +5,8 @@ import 'package:fb_fitbody/core/theme/app_theme.dart';
 import 'package:fb_fitbody/core/theme/cubit/change_theme_cubit.dart';
 import 'package:fb_fitbody/core/theme/cubit/change_theme_state.dart';
 import 'package:fb_fitbody/core/utils/shared_prefs.dart';
+import 'package:fb_fitbody/features/cart/domain/repos/cart_repo.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,8 +22,13 @@ class QuickMart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => ChangeThemeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => ChangeThemeCubit()),
+        BlocProvider(
+          create: (context) => CartCubit(cartRepo: getIt<CartRepo>()),
+        ),
+      ],
       child: BlocBuilder<ChangeThemeCubit, ChangeThemeState>(
         builder: (context, state) {
           return MaterialApp(

@@ -1,6 +1,4 @@
-import 'package:fb_fitbody/core/constants/app_constants.dart';
-import 'package:fb_fitbody/features/details/presentation/widgets/details_app_bar.dart';
-import 'package:fb_fitbody/features/details/presentation/widgets/product_details_widget.dart';
+import 'package:fb_fitbody/features/details/presentation/widgets/details_view_body_bloc_consumer.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -47,15 +45,10 @@ class _DetailsViewBodyState extends State<DetailsViewBody> {
   Widget build(BuildContext context) {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as ProductDetailsEntity;
-    return CustomScrollView(
-      controller: _scrollController,
-      slivers: [
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(vertical: kHorizontalPadding),
-          sliver: DetailsAppBar(arguments: arguments, isScrolled: isScrolled),
-        ),
-        SliverToBoxAdapter(child: ProductDetailsWidget(arguments: arguments)),
-      ],
+    return DetailsViewBodyBlocConsumer(
+      scrollController: _scrollController,
+      isScrolled: isScrolled,
+      arguments: arguments,
     );
   }
 }

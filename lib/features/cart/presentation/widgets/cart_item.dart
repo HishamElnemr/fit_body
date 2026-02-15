@@ -1,14 +1,16 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/core/widgets/custom_cached_network_image.dart';
 import 'package:fb_fitbody/core/widgets/custom_check_box.dart';
 import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
+import 'package:fb_fitbody/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
-
+  const CartItem({super.key, required this.cartItemEntity});
+  final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,8 +21,8 @@ class CartItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              Assets.assetsImagesLivingRoomModernStyle3dScenesInteriorDesign145,
+            child: CustomCachedNetworkImage(
+              imageUrl: cartItemEntity.thumbnail,
               width: 120,
               height: 120,
               fit: BoxFit.cover,
@@ -39,7 +41,7 @@ class CartItem extends StatelessWidget {
                         child: Text(
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          'Product Name Product Name',
+                          cartItemEntity.title,
                           style: AppStyles.body2Medium14(context),
                         ),
                       ),
@@ -48,9 +50,12 @@ class CartItem extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  Text('100' + ' \$', style: AppStyles.heading3Bold18(context)),
                   Text(
-                    '10%',
+                    cartItemEntity.price.toString() + ' \$',
+                    style: AppStyles.heading3Bold18(context),
+                  ),
+                  Text(
+                    cartItemEntity.discountPercentage.toString() + '%',
                     style: AppStyles.heading3Bold18(context)
                         .copyWith(color: Theme.of(context).colorScheme.outline)
                         .copyWith(decoration: TextDecoration.lineThrough),
@@ -59,7 +64,7 @@ class CartItem extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const QuantitySelector(stockQuantity: 10),
+                      QuantitySelector(stockQuantity: cartItemEntity.quantity),
                       const SizedBox(width: 8),
                       IconButton(
                         onPressed: () {},

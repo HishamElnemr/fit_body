@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ProductCallToAction extends StatelessWidget {
-  const ProductCallToAction({super.key});
-
+  const ProductCallToAction({super.key, required this.onPressed});
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,9 +19,7 @@ class ProductCallToAction extends StatelessWidget {
         const SizedBox(width: 12),
         Expanded(
           child: CustomFilledButton(
-            onPressed: () {
-              //Navigator.pushNamed(context, RoutesName.cart);
-            },
+            onPressed: onPressed,
             text: 'Add to Cart',
             icon: SvgPicture.asset(
               Assets.assetsImagesShoppingCartInactive,

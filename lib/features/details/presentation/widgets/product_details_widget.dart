@@ -1,6 +1,9 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
+import 'package:fb_fitbody/features/cart/data/models/cart_item_request.dart';
+import 'package:fb_fitbody/features/cart/data/models/cart_request_body.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_call_to_action.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_tags_row.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_title_price_row.dart';
@@ -8,10 +11,10 @@ import 'package:fb_fitbody/features/details/presentation/widgets/read_more_text.
 import 'package:fb_fitbody/features/details/presentation/widgets/reviews_section.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
   const ProductDetailsWidget({super.key, required this.arguments});
-
   final ProductDetailsEntity arguments;
 
   @override
@@ -66,7 +69,21 @@ class ProductDetailsWidget extends StatelessWidget {
             child: QuantitySelector(stockQuantity: arguments.stock),
           ),
           const SizedBox(height: 12),
-          const ProductCallToAction(),
+          ProductCallToAction(
+            onPressed: () {
+              context.read<CartCubit>().addToCart(
+                CartRequestBody(
+                  userId: 1,
+                  products: [
+                    CartItemRequest(
+                      id: arguments.id,
+                      quantity: arguments.stock,
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
           const SizedBox(height: 24),
           Text(
             'Reviews (${arguments.reviews.length})',
