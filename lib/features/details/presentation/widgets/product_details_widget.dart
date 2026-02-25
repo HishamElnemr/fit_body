@@ -1,8 +1,7 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
-import 'package:fb_fitbody/features/cart/data/models/cart_item_request.dart';
-import 'package:fb_fitbody/features/cart/data/models/cart_request_body.dart';
+import 'package:fb_fitbody/features/cart/data/models/cart_item_model.dart';
 import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_call_to_action.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_tags_row.dart';
@@ -72,15 +71,15 @@ class ProductDetailsWidget extends StatelessWidget {
           ProductCallToAction(
             onPressed: () {
               context.read<CartCubit>().addToCart(
-                CartRequestBody(
-                  userId: 1,
-                  products: [
-                    CartItemRequest(
-                      id: arguments.id,
-                      quantity: arguments.stock,
+                    cartItemModel: CartItemModel(
+                      userId: '123', // Replace with actual user ID
+                      productId: arguments.id,
+                      title: arguments.title,
+                      price: arguments.price,
+                      quantity: 1, // Default quantity, can be updated based on QuantitySelector
+                      image: arguments.thumbnail,
+                      discount: arguments.discountPercentage,
                     ),
-                  ],
-                ),
               );
             },
           ),

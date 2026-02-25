@@ -17,7 +17,6 @@ class CartViewBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
           sliver: CartAppBar(),
         ),
-        SliverToBoxAdapter(child: SizedBox(height: 12)),
         SliverToBoxAdapter(child: CartViewBodyBlocBuilder()),
         CartOrderInfo(),
       ],
@@ -33,7 +32,7 @@ class CartViewBodyBlocBuilder extends StatelessWidget {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         if (state is CartSuccess) {
-          return CartItemsList(cartItems: state.cart.products);
+          return CartItemsList(cartItems: state.cartItemEntity);
         } else if (state is CartFailure) {
           return Center(child: Text(state.errorMessage));
         } else {

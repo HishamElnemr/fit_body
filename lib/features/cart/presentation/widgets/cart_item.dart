@@ -22,7 +22,7 @@ class CartItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: CustomCachedNetworkImage(
-              imageUrl: cartItemEntity.thumbnail,
+              imageUrl: cartItemEntity.image,
               width: 120,
               height: 120,
               fit: BoxFit.cover,
@@ -55,7 +55,7 @@ class CartItem extends StatelessWidget {
                     style: AppStyles.heading3Bold18(context),
                   ),
                   Text(
-                    cartItemEntity.discountPercentage.toString() + '%',
+                    cartItemEntity.discount.toString() + '%',
                     style: AppStyles.heading3Bold18(context)
                         .copyWith(color: Theme.of(context).colorScheme.outline)
                         .copyWith(decoration: TextDecoration.lineThrough),

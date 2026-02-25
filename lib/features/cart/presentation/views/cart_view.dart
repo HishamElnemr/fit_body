@@ -16,6 +16,7 @@ class _CartViewState extends State<CartView> {
   @override
   void initState() {
     super.initState();
+    context.read<CartCubit>().getCartItems(currentUserId: '123');
     log(context.read<CartCubit>().state.toString());
   }
 

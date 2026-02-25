@@ -16,7 +16,7 @@ final GetIt getIt = GetIt.instance;
 void setup() {
   getIt.registerSingleton<Dio>(Dio());
   getIt.registerSingleton<AuthServices>(AuthServices(getIt<Dio>()));
-  getIt.registerSingleton<CartServices>(CartServices(getIt<Dio>()));
+  getIt.registerSingleton<CartServices>(CartServices());
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImplementation(authServices: getIt<AuthServices>()),
   );

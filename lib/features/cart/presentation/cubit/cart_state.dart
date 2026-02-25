@@ -8,8 +8,8 @@ final class CartInitial extends CartState {}
 final class CartLoading extends CartState {}
 
 final class CartSuccess extends CartState {
-  final CartEntity cart;
-  CartSuccess({required this.cart});
+  final List<CartItemEntity> cartItemEntity;
+  CartSuccess({required this.cartItemEntity});
 }
 
 final class CartFailure extends CartState {

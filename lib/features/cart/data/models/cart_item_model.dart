@@ -2,52 +2,53 @@ import '../../domain/entities/cart_item_entity.dart';
 
 class CartItemModel extends CartItemEntity {
   const CartItemModel({
-    required super.id,
+    super.id,
+    required super.userId,
+    required super.productId,
     required super.title,
     required super.price,
     required super.quantity,
-    required super.total,
-    required super.discountPercentage,
-    required super.discountedTotal,
-    required super.thumbnail,
+    required super.image,
+    required super.discount,
   });
 
   factory CartItemModel.fromJson(Map<String, dynamic> json) {
     return CartItemModel(
       id: json['id'],
+      userId: json['user_id'],
+      productId: json['product_id'],
       title: json['title'],
       price: (json['price'] as num).toDouble(),
       quantity: json['quantity'],
-      total: (json['total'] as num).toDouble(),
-      discountPercentage: (json['discountPercentage'] as num).toDouble(),
-      discountedTotal: (json['discountedPrice'] as num).toDouble(),
-      thumbnail: json['thumbnail'],
+      image: json['image'],
+      discount: (json['discount'] as num).toDouble(),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      if (id != null) 'id': id,
+      'user_id': userId,
+      'product_id': productId,
       'title': title,
       'price': price,
       'quantity': quantity,
-      'total': total,
-      'discountPercentage': discountPercentage,
-      'discountedPrice': discountedTotal,
-      'thumbnail': thumbnail,
+      'image': image,
+      'discount': discount,
     };
   }
 
   CartItemEntity toEntity() {
     return CartItemEntity(
       id: id,
+      userId: userId,
+      productId: productId,
       title: title,
       price: price,
       quantity: quantity,
-      total: total,
-      discountPercentage: discountPercentage,
-      discountedTotal: discountedTotal,
-      thumbnail: thumbnail,
+      image: image,
+      discount: discount,
     );
   }
+
 }
