@@ -11,12 +11,17 @@ import 'package:fb_fitbody/features/product/domain/repositories/product_repo.dar
 import 'package:fb_fitbody/features/search/data/repositories/search_for_products_repo_implementation.dart';
 import 'package:fb_fitbody/features/search/domain/repositories/search_for_products_repo.dart';
 import 'package:get_it/get_it.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 final GetIt getIt = GetIt.instance;
 void setup() {
   getIt.registerSingleton<Dio>(Dio());
+  getIt.registerSingleton<SupabaseClient>(Supabase.instance.client);
+
   getIt.registerSingleton<AuthServices>(AuthServices(getIt<Dio>()));
-  getIt.registerSingleton<CartServices>(CartServices());
+  getIt.registerSingleton<CartServices>(
+    CartServices(supabaseClient: getIt<SupabaseClient>()),
+  );
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImplementation(authServices: getIt<AuthServices>()),
   );

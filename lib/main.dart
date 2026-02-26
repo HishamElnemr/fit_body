@@ -12,9 +12,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
-  setup();
   WidgetsFlutterBinding.ensureInitialized();
-  initializeSupabase();
+  await initializeSupabase();
+  setup();
   await SharedPrefs.init();
   runApp(const QuickMart());
 }

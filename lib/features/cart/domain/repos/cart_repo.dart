@@ -11,4 +11,12 @@ abstract class CartRepo {
   Future<Either<SupabaseStorageFailure, List<CartItemEntity>>> getCartItems({
     required String currentUserId,
   });
+
+  Future<Either<SupabaseStorageFailure, void>> removeCartItem({
+    required int cartItemId,
+  });
+
+  Future<Either<SupabaseStorageFailure, void>> clearCart({
+    required String currentUserId,
+  });
 }

@@ -119,7 +119,7 @@ class ServerStorageFailure extends StorageFailure {
 class NoInternetStorageFailure extends StorageFailure {
   const NoInternetStorageFailure()
     : super(
-        'No internet connection. Please check your network and try again.',
+        'No internet connection.',
         code: 'network_error',
       );
 }

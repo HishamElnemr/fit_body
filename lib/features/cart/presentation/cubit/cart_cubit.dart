@@ -39,4 +39,27 @@ class CartCubit extends Cubit<CartState> {
       (cartItemEntities) => emit(CartSuccess(cartItemEntity: cartItemEntities)),
     );
   }
+
+  Future<void> removeCartItem({required int cartItemId}) async {
+    final result = await cartRepo.removeCartItem(cartItemId: cartItemId);
+
+    result.fold((failure) => emit(CartFailure(errorMessage: failure.message)), (
+      _,
+    ) {
+      final currentList = List<CartItemEntity>.from(
+        state is CartSuccess ? (state as CartSuccess).cartItemEntity : [],
+      );
+      currentList.removeWhere((item) => item.id == cartItemId);
+      emit(CartSuccess(cartItemEntity: currentList));
+    });
+  }
+
+  Future<void> clearCart({required String currentUserId}) async {
+    final result = await cartRepo.clearCart(currentUserId: currentUserId);
+    result.fold((failure) => emit(CartFailure(errorMessage: failure.message)), (
+      _,
+    ) {
+      emit(CartSuccess(cartItemEntity: []));
+    });
+  }
 }

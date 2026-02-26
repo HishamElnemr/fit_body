@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fb_fitbody/core/errors/supabase_storage_failure.dart';
 import 'package:fb_fitbody/core/services/cart_services.dart';
@@ -14,10 +16,11 @@ class CartRepoImplementation implements CartRepo {
     required CartItemModel cartItemModel,
   }) async {
     try {
-      await cartServices.addCartItem(cartItemModel);
-      return right(cartItemModel.toEntity());
+      final cartItem = await cartServices.addOrUpdateCartItem(cartItemModel);
+      return right(cartItem.toEntity());
     } catch (e) {
-      return left(StorageFailure(e.toString()));
+      log(e.toString());
+      return left(StorageFailure.fromException(e));
     }
   }
 
@@ -34,7 +37,31 @@ class CartRepoImplementation implements CartRepo {
           .toList();
       return right(cartItemModels.map((model) => model.toEntity()).toList());
     } catch (e) {
-      return left(StorageFailure(e.toString()));
+      return left(StorageFailure.fromException(e));
+    }
+  }
+
+  @override
+  Future<Either<SupabaseStorageFailure, void>> removeCartItem({
+    required int cartItemId,
+  }) async {
+    try {
+      await cartServices.removeCartItem(cartItemId: cartItemId);
+      return right(null);
+    } catch (e) {
+      return left(StorageFailure.fromException(e));
+    }
+  }
+
+  @override
+  Future<Either<SupabaseStorageFailure, void>> clearCart({
+    required String currentUserId,
+  }) async {
+    try {
+      await cartServices.clearCart(currentUserId: currentUserId);
+      return right(null);
+    } catch (e) {
+      return left(StorageFailure.fromException(e));
     }
   }
 }

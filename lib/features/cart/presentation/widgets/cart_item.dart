@@ -5,7 +5,9 @@ import 'package:fb_fitbody/core/widgets/custom_cached_network_image.dart';
 import 'package:fb_fitbody/core/widgets/custom_check_box.dart';
 import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
 import 'package:fb_fitbody/features/cart/domain/entities/cart_item_entity.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CartItem extends StatelessWidget {
@@ -67,7 +69,12 @@ class CartItem extends StatelessWidget {
                       QuantitySelector(stockQuantity: cartItemEntity.quantity),
                       const SizedBox(width: 8),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () 
+                        {
+                          context.read<CartCubit>().clearCart(currentUserId: '123');
+
+                          
+                        },
                         icon: SvgPicture.asset(Assets.assetsImagesTrash),
                       ),
                     ],
