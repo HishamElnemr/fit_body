@@ -21,14 +21,22 @@ class CartItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            
-            child: CustomCachedNetworkImage(
-              imageUrl: cartItemEntity.image,
-              width: 120,
-              height: 120,
-              fit: BoxFit.cover,
+          Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Theme.of(context).colorScheme.onTertiary,
+              ),
+
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: CustomCachedNetworkImage(
+                imageUrl: cartItemEntity.image,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const SizedBox(width: 8),
@@ -71,8 +79,8 @@ class CartItem extends StatelessWidget {
                       const SizedBox(width: 8),
                       IconButton(
                         onPressed: () {
-                          context.read<CartCubit>().clearCart(
-                            currentUserId: '123',
+                          context.read<CartCubit>().removeCartItem(
+                            cartItemId: cartItemEntity.id!,
                           );
                         },
                         icon: SvgPicture.asset(Assets.assetsImagesTrash),

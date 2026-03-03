@@ -18,10 +18,7 @@ void showAddToCartSuccessSnackBar(BuildContext context) {
 }
 
 void showCartFailureSnackBar(BuildContext context, String message) {
-  _showCartSnackBar(
-    context,
-    _FailureSnackBarContent(message: message),
-  );
+  _showCartSnackBar(context, _FailureSnackBarContent(message: message));
 }
 
 void _showCartSnackBar(BuildContext context, Widget content) {
@@ -60,10 +57,10 @@ class _AddToCartSnackBarContent extends StatelessWidget {
         const SizedBox(width: 8),
         Expanded(
           child: Text(
-            'Product added to cart successfully!',
+            'Product added to cart successfully !',
             style: AppStyles.captionRegular12(
               context,
-            ).copyWith(color: AppColors.black),
+            ).copyWith(color: Theme.of(context).colorScheme.onSecondary),
           ),
         ),
         TextButton(
@@ -92,9 +89,9 @@ class _FailureSnackBarContent extends StatelessWidget {
         Expanded(
           child: Text(
             message,
-            style: AppStyles.captionRegular12(context).copyWith(
-              color: Colors.red,
-            ),
+            style: AppStyles.captionRegular12(
+              context,
+            ).copyWith(color: Colors.red),
           ),
         ),
       ],

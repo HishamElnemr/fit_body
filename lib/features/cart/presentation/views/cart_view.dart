@@ -1,6 +1,3 @@
-
-import 'dart:developer';
-
 import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:fb_fitbody/features/cart/presentation/widgets/cart_view_body.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +14,6 @@ class _CartViewState extends State<CartView> {
   void initState() {
     super.initState();
     context.read<CartCubit>().getCartItems(currentUserId: '123');
-    log(context.read<CartCubit>().state.toString());
   }
 
   @override

@@ -8,12 +8,23 @@ class CartViewBodyBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.sizeOf(context).height;
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         if (state is CartSuccess) {
+          if (state.cartItemEntity.isEmpty) {
+            return SizedBox(
+              height: height * 0.6,
+              child: const Center(child: Text('Cart is empty')),
+            );
+          }
           return CartItemsList(cartItems: state.cartItemEntity);
         } else if (state is CartFailure) {
-          return Center(child: Text(state.errorMessage));
+          return SizedBox(
+            height: height * 0.6,
+
+            child: Center(child: Text(state.errorMessage)),
+          );
         } else {
           return const Center(child: CircularProgressIndicator());
         }
