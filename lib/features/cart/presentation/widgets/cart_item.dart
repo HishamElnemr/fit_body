@@ -23,6 +23,7 @@ class CartItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
+            
             child: CustomCachedNetworkImage(
               imageUrl: cartItemEntity.image,
               width: 120,
@@ -69,11 +70,10 @@ class CartItem extends StatelessWidget {
                       QuantitySelector(stockQuantity: cartItemEntity.quantity),
                       const SizedBox(width: 8),
                       IconButton(
-                        onPressed: () 
-                        {
-                          context.read<CartCubit>().clearCart(currentUserId: '123');
-
-                          
+                        onPressed: () {
+                          context.read<CartCubit>().clearCart(
+                            currentUserId: '123',
+                          );
                         },
                         icon: SvgPicture.asset(Assets.assetsImagesTrash),
                       ),

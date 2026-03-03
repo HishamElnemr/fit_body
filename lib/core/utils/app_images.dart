@@ -11,7 +11,7 @@ class Assets {
   static const String assetsImages02OnlineShopping = "Assets/images/02OnlineShopping.png";
 
   /// Assets for assetsImages03OnlineShopping
-  /// Assets/images/03OnlineShopping.png
+  /// Assets/images/03OnlineShopping.pngF
   static const String assetsImages03OnlineShopping = "Assets/images/03OnlineShopping.png";
 
   /// Assets for assetsImagesArrowLeft
@@ -121,6 +121,10 @@ class Assets {
   /// Assets for assetsImagesTagIcon
   /// Assets/images/tag_icon.svg
   static const String assetsImagesTagIcon = "Assets/images/tag_icon.svg";
+
+  /// Assets for assetsImagesTickCircle
+  /// Assets/images/tick-circle.svg
+  static const String assetsImagesTickCircle = "Assets/images/tick-circle.svg";
 
   /// Assets for assetsImagesTrash
   /// Assets/images/trash.svg
