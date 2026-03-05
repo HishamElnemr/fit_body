@@ -7,6 +7,7 @@ class CartItemEntity {
   final int quantity;
   final String image;
   final double discount;
+  final int stockQuantity;
 
   const CartItemEntity({
     this.id,
@@ -17,6 +18,7 @@ class CartItemEntity {
     required this.quantity,
     required this.image,
     required this.discount,
+    required this.stockQuantity,
   });
 
   double get priceAfterDiscount {

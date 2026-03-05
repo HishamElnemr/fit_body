@@ -3,6 +3,7 @@ import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
 import 'package:fb_fitbody/features/cart/data/models/cart_item_model.dart';
 import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:fb_fitbody/features/details/presentation/cubit/quantity_cubit.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_call_to_action.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_tags_row.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_title_price_row.dart';
@@ -65,21 +66,33 @@ class ProductDetailsWidget extends StatelessWidget {
           const SizedBox(height: 12),
           SizedBox(
             width: 120,
-            child: QuantitySelector(stockQuantity: arguments.stock),
+            child: BlocBuilder<QuantityCubit, int>(
+              builder: (context, selectedQuantity) {
+                return QuantitySelector(
+                  stockQuantity: arguments.stock,
+                  userSelectedQuantity: selectedQuantity,
+                  onChanged: (value) =>
+                      context.read<QuantityCubit>().update(value),
+                );
+              },
+            ),
           ),
           const SizedBox(height: 12),
           ProductCallToAction(
             onPressed: () {
               context.read<CartCubit>().addToCart(
-                    cartItemModel: CartItemModel(
-                      userId: '123', // Replace with actual user ID
-                      productId: arguments.id,
-                      title: arguments.title,
-                      price: arguments.price,
-                      quantity: 1, // Default quantity, can be updated based on QuantitySelector
-                      image: arguments.thumbnail,
-                      discount: arguments.discountPercentage,
-                    ),
+                cartItemModel: CartItemModel(
+                  userId: '123',
+                  productId: arguments.id,
+                  title: arguments.title,
+                  price:
+                      arguments.price *
+                      context.read<QuantityCubit>().getQuantity(),
+                  quantity: context.read<QuantityCubit>().state,
+                  image: arguments.thumbnail,
+                  discount: arguments.discountPercentage,
+                  stockQuantity: arguments.stock,
+                ),
               );
             },
           ),

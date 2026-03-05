@@ -8,6 +8,7 @@ class CartItemsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: const EdgeInsets.only(top: 12),
       itemCount: cartItems.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),

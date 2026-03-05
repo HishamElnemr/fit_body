@@ -10,6 +10,7 @@ class CartItemModel extends CartItemEntity {
     required super.quantity,
     required super.image,
     required super.discount,
+    required super.stockQuantity,
   });
 
   factory CartItemModel.fromJson(Map<String, dynamic> json) {
@@ -22,6 +23,7 @@ class CartItemModel extends CartItemEntity {
       quantity: json['quantity'],
       image: json['image'],
       discount: (json['discount'] as num).toDouble(),
+      stockQuantity: json['stock_quantity'],
     );
   }
 
@@ -35,6 +37,7 @@ class CartItemModel extends CartItemEntity {
       'quantity': quantity,
       'image': image,
       'discount': discount,
+      'stock_quantity': stockQuantity,
     };
   }
 
@@ -48,6 +51,7 @@ class CartItemModel extends CartItemEntity {
       quantity: quantity,
       image: image,
       discount: discount,
+      stockQuantity: stockQuantity,
     );
   }
 

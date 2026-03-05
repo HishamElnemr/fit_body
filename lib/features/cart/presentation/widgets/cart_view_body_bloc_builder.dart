@@ -15,7 +15,7 @@ class CartViewBodyBlocBuilder extends StatelessWidget {
           if (state.cartItemEntity.isEmpty) {
             return SizedBox(
               height: height * 0.6,
-              child: const Center(child: Text('Cart is empty')),
+              child: const Center(child: Text('Your Cart Is Empty')),
             );
           }
           return CartItemsList(cartItems: state.cartItemEntity);

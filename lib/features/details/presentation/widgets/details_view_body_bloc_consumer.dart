@@ -3,7 +3,7 @@ import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/add_to_cart_snackbar.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/cart_loading_overlay.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/details_app_bar.dart';
-import 'package:fb_fitbody/features/details/presentation/widgets/product_details_widget.dart';
+import 'package:fb_fitbody/features/details/presentation/widgets/quantity_cubit_provider.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +38,7 @@ class DetailsViewBodyBlocConsumer extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: ProductDetailsWidget(arguments: arguments),
+              child: QuantityCubitProvider(arguments: arguments),
             ),
             if (isLoading)
               const SliverToBoxAdapter(child: CartLoadingOverlay()),

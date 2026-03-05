@@ -66,16 +66,16 @@ class CartItem extends StatelessWidget {
                     style: AppStyles.heading3Bold18(context),
                   ),
                   Text(
-                    cartItemEntity.discount.toString() + '%',
-                    style: AppStyles.heading3Bold18(context)
-                        .copyWith(color: Theme.of(context).colorScheme.outline)
-                        .copyWith(decoration: TextDecoration.lineThrough),
+                    cartItemEntity.discount.round().toString() + '% OFF',
+                    style: AppStyles.heading3Bold18(
+                      context,
+                    ).copyWith(color: Theme.of(context).colorScheme.outline),
                   ),
                   const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      QuantitySelector(stockQuantity: cartItemEntity.quantity),
+                      QuantitySelector(stockQuantity: cartItemEntity.stockQuantity, userSelectedQuantity: cartItemEntity.quantity),
                       const SizedBox(width: 8),
                       IconButton(
                         onPressed: () {

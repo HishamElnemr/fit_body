@@ -32,7 +32,10 @@ class CartAppBar extends StatelessWidget {
                     child: SizedBox(
                       width: 24,
                       height: 24,
-                      child: SvgPicture.asset(Assets.assetsImagesArrowLeft),
+                      child: SvgPicture.asset(
+                        Assets.assetsImagesArrowLeft,
+                        color: Theme.of(context).colorScheme.onSecondary,
+                      ),
                     ),
                   ),
                 ),

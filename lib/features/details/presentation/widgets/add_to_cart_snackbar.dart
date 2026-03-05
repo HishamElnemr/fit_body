@@ -86,6 +86,16 @@ class _FailureSnackBarContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: const Icon(Icons.error, color: Colors.white, size: 20),
+        ),
+        const SizedBox(width: 8),
         Expanded(
           child: Text(
             message,

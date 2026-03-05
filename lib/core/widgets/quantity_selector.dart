@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 
 class QuantitySelector extends StatefulWidget {
-  const QuantitySelector({super.key, required this.stockQuantity});
+  const QuantitySelector({
+    super.key,
+    required this.stockQuantity,
+    required this.userSelectedQuantity,
+    this.onChanged,
+  });
   final int stockQuantity;
+  final int userSelectedQuantity;
+  final ValueChanged<int>? onChanged;
   @override
   State<QuantitySelector> createState() => _QuantitySelectorState();
 }
 
 class _QuantitySelectorState extends State<QuantitySelector> {
-  int quantity = 1;
+  late int selectedQuantity;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedQuantity = widget.userSelectedQuantity;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,19 +38,21 @@ class _QuantitySelectorState extends State<QuantitySelector> {
               IconButton(
                 onPressed: () {
                   setState(() {
-                    if (quantity > 1) {
-                      quantity--;
+                    if (selectedQuantity > 1) {
+                      selectedQuantity--;
+                      widget.onChanged?.call(selectedQuantity);
                     }
                   });
                 },
                 icon: const Icon(Icons.remove),
               ),
-              Text(quantity.toString()),
+              Text(selectedQuantity.toString()),
               IconButton(
                 onPressed: () {
                   setState(() {
-                    if (quantity < widget.stockQuantity) {
-                      quantity++;
+                    if (selectedQuantity < widget.stockQuantity) {
+                      selectedQuantity++;
+                      widget.onChanged?.call(selectedQuantity);
                     }
                   });
                 },

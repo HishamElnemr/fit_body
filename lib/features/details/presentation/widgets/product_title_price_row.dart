@@ -26,10 +26,10 @@ class ProductTitlePriceRow extends StatelessWidget {
               style: AppStyles.heading3Bold18(context),
             ),
             Text(
-              '${discountPercentage.round()}%',
-              style: AppStyles.heading3Bold18(context)
-                  .copyWith(color: Theme.of(context).colorScheme.outline)
-                  .copyWith(decoration: TextDecoration.lineThrough),
+              '${discountPercentage.round()} % off',
+              style: AppStyles.heading3Bold18(
+                context,
+              ).copyWith(color: Theme.of(context).colorScheme.outline),
             ),
           ],
         ),
