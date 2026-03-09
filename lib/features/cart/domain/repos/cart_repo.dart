@@ -19,4 +19,5 @@ abstract class CartRepo {
   Future<Either<SupabaseStorageFailure, void>> clearCart({
     required String currentUserId,
   });
+
 }

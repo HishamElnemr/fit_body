@@ -10,6 +10,19 @@ class CartCubit extends Cubit<CartState> {
   CartCubit({required this.cartRepo}) : super(CartInitial());
   final CartRepo cartRepo;
 
+  double _calculateSubtotal(List<CartItemEntity> items) {
+    return items.fold(0, (sum, item) => sum + item.totalOriginalPrice);
+  }
+
+  void _emitCartSuccess(List<CartItemEntity> items, {double? subtotal}) {
+    emit(
+      CartSuccess(
+        cartItemEntity: items,
+        subtotal: subtotal ?? _calculateSubtotal(items),
+      ),
+    );
+  }
+
   Future<void> addToCart({required CartItemModel cartItemModel}) async {
     final currentList = List<CartItemEntity>.from(
       state is CartSuccess ? (state as CartSuccess).cartItemEntity : [],
@@ -27,7 +40,7 @@ class CartCubit extends Cubit<CartState> {
       } else {
         currentList.add(newItem);
       }
-      emit(CartSuccess(cartItemEntity: currentList));
+      _emitCartSuccess(currentList);
     });
   }
 
@@ -36,7 +49,7 @@ class CartCubit extends Cubit<CartState> {
     final result = await cartRepo.getCartItems(currentUserId: currentUserId);
     result.fold(
       (failure) => emit(CartFailure(errorMessage: failure.message)),
-      (cartItemEntities) => emit(CartSuccess(cartItemEntity: cartItemEntities)),
+      (cartItemEntities) => _emitCartSuccess(cartItemEntities),
     );
   }
 
@@ -50,8 +63,20 @@ class CartCubit extends Cubit<CartState> {
         state is CartSuccess ? (state as CartSuccess).cartItemEntity : [],
       );
       currentList.removeWhere((item) => item.id == cartItemId);
-      emit(CartSuccess(cartItemEntity: currentList));
+      _emitCartSuccess(currentList);
     });
+  }
+
+  void updateItemQuantity({required int productId, required int newQuantity}) {
+    if (state is! CartSuccess) return;
+    final currentList = (state as CartSuccess).cartItemEntity;
+    final updatedList = currentList.map((item) {
+      if (item.productId == productId) {
+        return item.copyWith(quantity: newQuantity);
+      }
+      return item;
+    }).toList();
+    _emitCartSuccess(updatedList);
   }
 
   Future<void> clearCart({required String currentUserId}) async {
@@ -59,7 +84,7 @@ class CartCubit extends Cubit<CartState> {
     result.fold((failure) => emit(CartFailure(errorMessage: failure.message)), (
       _,
     ) {
-      emit(CartSuccess(cartItemEntity: []));
+      _emitCartSuccess([]);
     });
   }
 }

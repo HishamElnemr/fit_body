@@ -32,4 +32,28 @@ class CartItemEntity {
   double get totalFinalPrice {
     return priceAfterDiscount * quantity;
   }
+
+  CartItemEntity copyWith({
+    int? id,
+    String? userId,
+    int? productId,
+    String? title,
+    double? price,
+    int? quantity,
+    String? image,
+    double? discount,
+    int? stockQuantity,
+  }) {
+    return CartItemEntity(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      productId: productId ?? this.productId,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      quantity: quantity ?? this.quantity,
+      image: image ?? this.image,
+      discount: discount ?? this.discount,
+      stockQuantity: stockQuantity ?? this.stockQuantity,
+    );
+  }
 }

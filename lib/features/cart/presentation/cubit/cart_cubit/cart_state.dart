@@ -9,9 +9,10 @@ final class CartLoading extends CartState {}
 
 final class CartSuccess extends CartState {
   final List<CartItemEntity> cartItemEntity;
-  CartSuccess({required this.cartItemEntity});
-}
+  final double subtotal;
 
+  CartSuccess({required this.cartItemEntity, required this.subtotal});
+}
 final class CartFailure extends CartState {
   final String errorMessage;
   CartFailure({required this.errorMessage});

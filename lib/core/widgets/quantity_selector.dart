@@ -5,11 +5,11 @@ class QuantitySelector extends StatefulWidget {
     super.key,
     required this.stockQuantity,
     required this.userSelectedQuantity,
-    this.onChanged,
+    required this.onChanged,
   });
   final int stockQuantity;
   final int userSelectedQuantity;
-  final ValueChanged<int>? onChanged;
+  final ValueChanged<int> onChanged;
   @override
   State<QuantitySelector> createState() => _QuantitySelectorState();
 }
@@ -40,7 +40,7 @@ class _QuantitySelectorState extends State<QuantitySelector> {
                   setState(() {
                     if (selectedQuantity > 1) {
                       selectedQuantity--;
-                      widget.onChanged?.call(selectedQuantity);
+                      widget.onChanged.call(selectedQuantity);
                     }
                   });
                 },
@@ -52,7 +52,7 @@ class _QuantitySelectorState extends State<QuantitySelector> {
                   setState(() {
                     if (selectedQuantity < widget.stockQuantity) {
                       selectedQuantity++;
-                      widget.onChanged?.call(selectedQuantity);
+                      widget.onChanged.call(selectedQuantity);
                     }
                   });
                 },

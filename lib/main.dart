@@ -7,7 +7,7 @@ import 'package:fb_fitbody/core/theme/cubit/change_theme_cubit.dart';
 import 'package:fb_fitbody/core/theme/cubit/change_theme_state.dart';
 import 'package:fb_fitbody/core/utils/shared_prefs.dart';
 import 'package:fb_fitbody/features/cart/domain/repos/cart_repo.dart';
-import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

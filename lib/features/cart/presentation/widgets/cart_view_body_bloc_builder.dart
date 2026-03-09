@@ -1,5 +1,6 @@
-import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:fb_fitbody/features/cart/presentation/widgets/cart_items_list.dart';
+import 'package:fb_fitbody/features/cart/presentation/widgets/cart_items_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +27,10 @@ class CartViewBodyBlocBuilder extends StatelessWidget {
             child: Center(child: Text(state.errorMessage)),
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Padding(
+            padding: EdgeInsets.only(top: 12),
+            child: CartItemsSkeleton(),
+          );
         }
       },
     );

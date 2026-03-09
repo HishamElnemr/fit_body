@@ -1,5 +1,5 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
-import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/add_to_cart_snackbar.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/cart_loading_overlay.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/details_app_bar.dart';

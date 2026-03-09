@@ -1,6 +1,6 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/features/cart/presentation/widgets/cart_app_bar.dart';
-import 'package:fb_fitbody/features/cart/presentation/widgets/cart_order_info.dart';
+import 'package:fb_fitbody/features/cart/presentation/widgets/cart_order_info_bloc_builder.dart';
 import 'package:fb_fitbody/features/cart/presentation/widgets/cart_view_body_bloc_builder.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class CartViewBody extends StatelessWidget {
           sliver: CartAppBar(),
         ),
         SliverToBoxAdapter(child: CartViewBodyBlocBuilder()),
-        CartOrderInfo(),
+        CartOrderInfoBlocBuilder(),
       ],
     );
   }

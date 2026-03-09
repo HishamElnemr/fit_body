@@ -4,8 +4,8 @@ import 'package:fb_fitbody/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class CartOrderInfo extends StatelessWidget {
-  const CartOrderInfo({super.key});
-
+  const CartOrderInfo({super.key, required this.subtotal});
+  final double subtotal ;
   @override
   Widget build(BuildContext context) {
     return SliverFillRemaining(
@@ -20,21 +20,21 @@ class CartOrderInfo extends StatelessWidget {
             const SizedBox(height: 16),
             _OrderInfoRow(
               label: 'Subtotal',
-              value: '100 \$',
+              value: '${subtotal.toStringAsFixed(2)} \$',
               style: AppStyles.captionRegular12(context)
                   .copyWith(color: Theme.of(context).colorScheme.outline),
             ),
             const SizedBox(height: 12),
             _OrderInfoRow(
               label: 'Shipping Cost',
-              value: '100 \$',
+              value: '10 \$',
               style: AppStyles.captionRegular12(context)
                   .copyWith(color: Theme.of(context).colorScheme.outline),
             ),
             const SizedBox(height: 12),
             _OrderInfoRow(
               label: 'Total',
-              value: '100 \$',
+              value: '${(subtotal + 10).toStringAsFixed(2)} \$',
               style: AppStyles.body1Medium16(context),
               valueColor: Theme.of(context).colorScheme.outline,
             ),

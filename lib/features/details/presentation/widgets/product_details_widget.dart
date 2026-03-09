@@ -2,7 +2,7 @@ import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
 import 'package:fb_fitbody/features/cart/data/models/cart_item_model.dart';
-import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:fb_fitbody/features/details/presentation/cubit/quantity_cubit.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_call_to_action.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_tags_row.dart';
@@ -86,8 +86,7 @@ class ProductDetailsWidget extends StatelessWidget {
                   productId: arguments.id,
                   title: arguments.title,
                   price:
-                      arguments.price *
-                      context.read<QuantityCubit>().getQuantity(),
+                      arguments.price ,
                   quantity: context.read<QuantityCubit>().state,
                   image: arguments.thumbnail,
                   discount: arguments.discountPercentage,

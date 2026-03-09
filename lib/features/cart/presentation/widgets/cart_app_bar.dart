@@ -1,7 +1,7 @@
 import 'package:fb_fitbody/core/constants/app_colors.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
-import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';

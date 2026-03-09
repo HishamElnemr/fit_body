@@ -5,7 +5,9 @@ import 'package:fb_fitbody/core/widgets/custom_cached_network_image.dart';
 import 'package:fb_fitbody/core/widgets/custom_check_box.dart';
 import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
 import 'package:fb_fitbody/features/cart/domain/entities/cart_item_entity.dart';
-import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_counter_cubit/cart_counter_cubit.dart';
+import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
+import 'package:fb_fitbody/features/cart/presentation/widgets/display_price_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -61,9 +63,8 @@ class CartItem extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    cartItemEntity.price.toString() + ' \$',
-                    style: AppStyles.heading3Bold18(context),
+                  DisplayProductPriceBlocBuilder(
+                    cartItemEntity: cartItemEntity,
                   ),
                   Text(
                     cartItemEntity.discount.round().toString() + '% OFF',
@@ -75,7 +76,20 @@ class CartItem extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      QuantitySelector(stockQuantity: cartItemEntity.stockQuantity, userSelectedQuantity: cartItemEntity.quantity),
+                      QuantitySelector(
+                        stockQuantity: cartItemEntity.stockQuantity,
+                        userSelectedQuantity: cartItemEntity.quantity,
+                        onChanged: (value) {
+                          context.read<CartCounterCubit>().updateTotalPrice(
+                            value,
+                            cartItemEntity.price,
+                          );
+                          context.read<CartCubit>().updateItemQuantity(
+                            productId: cartItemEntity.productId,
+                            newQuantity: value,
+                          );
+                        },
+                      ),
                       const SizedBox(width: 8),
                       IconButton(
                         onPressed: () {
