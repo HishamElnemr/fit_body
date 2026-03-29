@@ -2,12 +2,12 @@ import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/custom_cached_network_image.dart';
-import 'package:fb_fitbody/core/widgets/custom_check_box.dart';
 import 'package:fb_fitbody/core/widgets/quantity_selector.dart';
 import 'package:fb_fitbody/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:fb_fitbody/features/cart/presentation/cubit/cart_counter_cubit/cart_counter_cubit.dart';
 import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:fb_fitbody/features/cart/presentation/widgets/display_price_bloc_builder.dart';
+import 'package:fb_fitbody/features/cart/presentation/widgets/is_selected_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -59,7 +59,7 @@ class CartItem extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 8),
-                      CustomCheckBox(onTap: () {}, isSelected: true),
+                      IsSelectedWidget(cartItemEntity: cartItemEntity),
                     ],
                   ),
                   const SizedBox(height: 8),

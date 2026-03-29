@@ -13,6 +13,7 @@ final class CartSuccess extends CartState {
 
   CartSuccess({required this.cartItemEntity, required this.subtotal});
 }
+
 final class CartFailure extends CartState {
   final String errorMessage;
   CartFailure({required this.errorMessage});

@@ -15,11 +15,13 @@ class CartItemsList extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
+        final item = cartItems[index];
         return BlocProvider(
-          create: (context) => CartCounterCubit(),
+          create: (context) =>
+              CartCounterCubit(initialTotalPrice: item.totalOriginalPrice),
           child: Padding(
             padding: const EdgeInsets.only(bottom: 16),
-            child: CartItem(cartItemEntity: cartItems[index]),
+            child: CartItem(cartItemEntity: item),
           ),
         );
       },

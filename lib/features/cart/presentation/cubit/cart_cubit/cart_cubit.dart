@@ -10,15 +10,21 @@ class CartCubit extends Cubit<CartState> {
   CartCubit({required this.cartRepo}) : super(CartInitial());
   final CartRepo cartRepo;
 
-  double _calculateSubtotal(List<CartItemEntity> items) {
-    return items.fold(0, (sum, item) => sum + item.totalOriginalPrice);
+  double calculateSubtotal(
+    List<CartItemEntity> items, {
+    bool isSelected = true,
+  }) {
+    return items.fold(
+      0,
+      (sum, item) => sum + (isSelected ? item.totalOriginalPrice : 0),
+    );
   }
 
   void _emitCartSuccess(List<CartItemEntity> items, {double? subtotal}) {
     emit(
       CartSuccess(
         cartItemEntity: items,
-        subtotal: subtotal ?? _calculateSubtotal(items),
+        subtotal: subtotal ?? calculateSubtotal(items),
       ),
     );
   }

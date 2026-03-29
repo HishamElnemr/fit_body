@@ -16,11 +16,8 @@ class DisplayProductPriceBlocBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartCounterCubit, double>(
       builder: (context, totalPrice) {
-        final price = totalPrice == 0
-            ? cartItemEntity.totalOriginalPrice
-            : totalPrice;
         return Text(
-          '${price.toStringAsFixed(2)} \$',
+          '${totalPrice.toStringAsFixed(2)} \$',
           style: AppStyles.heading3Bold18(context),
         );
       },
