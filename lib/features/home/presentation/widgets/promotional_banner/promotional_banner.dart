@@ -12,33 +12,38 @@ class PromotionalBanner extends StatelessWidget {
     required this.position,
     required this.productDetailsEntity,
     required this.bannerIndex,
+    required this.onTap,
   });
 
   final int dotsCount;
   final double position;
   final ProductDetailsEntity productDetailsEntity;
   final int bannerIndex;
-
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          BannerBackground(
-            bannerIndex: bannerIndex,
-            child: BannerContent(product: productDetailsEntity),
-          ),
-          Positioned(
-            bottom: 10,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: BannerDots(dotsCount: dotsCount, position: position),
+    return GestureDetector(
+      onTap: onTap,
+
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            BannerBackground(
+              bannerIndex: bannerIndex,
+              child: BannerContent(product: productDetailsEntity),
             ),
-          ),
-        ],
+            Positioned(
+              bottom: 10,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: BannerDots(dotsCount: dotsCount, position: position),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

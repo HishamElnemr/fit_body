@@ -2,19 +2,21 @@ import 'package:fb_fitbody/features/home/presentation/widgets/category_details_b
 import 'package:flutter/material.dart';
 
 class CategoryBox extends StatelessWidget {
-  const CategoryBox({
-    super.key,
-  });
+  const CategoryBox({super.key, this.emoji = '📱', this.title = 'Electronics'});
+
+  final String emoji;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      height: 60,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Theme.of(context).colorScheme.onTertiary),
       ),
-      child: const CategoryDetailsBox(),
+      child: CategoryDetailsBox(emoji: emoji, title: title),
     );
   }
 }

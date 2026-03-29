@@ -22,4 +22,7 @@ abstract class GetProductsServices {
     @Query('sortBy') String? sortBy,
     @Query('order') String? order,
   });
+
+  @GET('products/category-list')
+  Future<List<String>> getCategories();
 }

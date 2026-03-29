@@ -3,8 +3,8 @@ import 'package:fb_fitbody/core/widgets/custom_logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.icon, required this.onTap});
+class CustomLogoAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomLogoAppBar({super.key, required this.icon, required this.onTap});
   final String icon;
   final void Function()? onTap;
   @override

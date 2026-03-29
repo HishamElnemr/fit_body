@@ -6,6 +6,8 @@ import 'package:fb_fitbody/features/auth/data/repositories/auth_repo_implementat
 import 'package:fb_fitbody/features/auth/domain/repositories/auth_repo.dart';
 import 'package:fb_fitbody/features/cart/data/repos/cart_repo_implementation.dart';
 import 'package:fb_fitbody/features/cart/domain/repos/cart_repo.dart';
+import 'package:fb_fitbody/features/categories/data/repositories/categories_repo_implementation.dart';
+import 'package:fb_fitbody/features/categories/domain/repositories/categories_repo.dart';
 import 'package:fb_fitbody/features/product/data/repositories/product_repo_implementation.dart';
 import 'package:fb_fitbody/features/product/domain/repositories/product_repo.dart';
 import 'package:fb_fitbody/features/search/data/repositories/search_for_products_repo_implementation.dart';
@@ -35,6 +37,9 @@ void setup() {
   );
   getIt.registerSingleton<SearchForProductsRepo>(
     SearchForProductsRepoImplementation(getIt<GetProductsServices>()),
+  );
+  getIt.registerSingleton<CategoriesRepo>(
+    CategoriesRepoImplementation(getIt<GetProductsServices>()),
   );
 
   getIt.registerSingleton<CartRepo>(

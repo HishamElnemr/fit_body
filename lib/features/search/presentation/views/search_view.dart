@@ -1,6 +1,6 @@
 import 'package:fb_fitbody/core/services/getit_services.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
-import 'package:fb_fitbody/core/widgets/custom_app_bar.dart';
+import 'package:fb_fitbody/core/widgets/custom_logo_app_bar.dart';
 import 'package:fb_fitbody/features/search/domain/repositories/search_for_products_repo.dart';
 import 'package:fb_fitbody/features/search/presentation/cubit/search_for_product_cubit.dart';
 import 'package:fb_fitbody/features/search/presentation/widgets/search_view_body.dart';
@@ -16,7 +16,7 @@ class SearchView extends StatelessWidget {
       create: (context) =>
           SearchForProductCubit(getIt<SearchForProductsRepo>()),
       child: Scaffold(
-        appBar: CustomAppBar(
+        appBar: CustomLogoAppBar(
           icon: Assets.assetsImagesCancel,
           onTap: () {
             Navigator.pop(context);

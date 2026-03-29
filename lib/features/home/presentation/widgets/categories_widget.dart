@@ -9,13 +9,21 @@ class CategoriesWidget extends StatelessWidget {
     return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(child: CategoryBox()),
+        Expanded(
+          child: CategoryBox(emoji: '📱', title: 'Electronics'),
+        ),
         SizedBox(width: 8),
-        Expanded(child: CategoryBox()),
+        Expanded(
+          child: CategoryBox(emoji: '👜', title: 'Fashion'),
+        ),
         SizedBox(width: 8),
-        Expanded(child: CategoryBox()),
+        Expanded(
+          child: CategoryBox(emoji: '🛋️', title: 'Furniture'),
+        ),
         SizedBox(width: 8),
-        Expanded(child: CategoryBox()),
+        Expanded(
+          child: CategoryBox(emoji: '🚗', title: 'Industrial'),
+        ),
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:fb_fitbody/core/routes/routes_name.dart';
 import 'package:fb_fitbody/features/home/presentation/widgets/promotional_banner/promotional_banner.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,13 @@ class _PromotionalBannerPageViewState extends State<PromotionalBannerPageView> {
           position: _currentPage.toDouble(),
           productDetailsEntity: widget.productDetailsEntity[index],
           bannerIndex: index,
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              RoutesName.details,
+              arguments: widget.productDetailsEntity[index],
+            );
+          },
         );
       },
     );

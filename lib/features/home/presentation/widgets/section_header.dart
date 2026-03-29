@@ -2,10 +2,16 @@ import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class SectionHeader extends StatelessWidget {
-  const SectionHeader({super.key, required this.title, required this.seeAll});
+  const SectionHeader({
+    super.key,
+    required this.title,
+    required this.seeAll,
+    this.onSeeAllTap,
+  });
 
   final String title;
   final String seeAll;
+  final VoidCallback? onSeeAllTap;
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +19,14 @@ class SectionHeader extends StatelessWidget {
       children: [
         Text(title, style: AppStyles.heading3Bold18(context)),
         const Spacer(),
-        Text(
-          seeAll,
-          style: AppStyles.overlineSemiBold10(
-            context,
-          ).copyWith(color: Theme.of(context).primaryColor),
+        GestureDetector(
+          onTap: onSeeAllTap,
+          child: Text(
+            seeAll,
+            style: AppStyles.overlineSemiBold10(
+              context,
+            ).copyWith(color: Theme.of(context).primaryColor),
+          ),
         ),
       ],
     );

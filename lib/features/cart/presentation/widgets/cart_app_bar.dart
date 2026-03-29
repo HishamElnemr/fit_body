@@ -1,10 +1,9 @@
 import 'package:fb_fitbody/core/constants/app_colors.dart';
-import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/core/widgets/custom_back_title_app_bar.dart';
 import 'package:fb_fitbody/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CartAppBar extends StatelessWidget {
   const CartAppBar({super.key});
@@ -21,27 +20,7 @@ class CartAppBar extends StatelessWidget {
       centerTitle: false,
       titleSpacing: 0,
       title: Navigator.canPop(context)
-          ? Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 0, right: 16),
-                    child: SizedBox(
-                      width: 24,
-                      height: 24,
-                      child: SvgPicture.asset(
-                        Assets.assetsImagesArrowLeft,
-                        color: Theme.of(context).colorScheme.onSecondary,
-                      ),
-                    ),
-                  ),
-                ),
-                Text('My Cart', style: AppStyles.body2Medium14(context)),
-              ],
-            )
+          ? const BackTitleBarContent(title: 'My Cart')
           : Text('My Cart', style: AppStyles.body2Medium14(context)),
       bottom: PreferredSize(
         preferredSize: const Size.fromHeight(1),

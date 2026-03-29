@@ -9,4 +9,5 @@ class RoutesName {
   static const String searchResult = 'search_result_view';
   static const String details = 'details_view';
   static const String cart = 'cart_view';
+  static const String categories = 'categories_view';
 }
