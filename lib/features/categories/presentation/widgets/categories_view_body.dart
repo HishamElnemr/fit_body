@@ -1,6 +1,6 @@
 import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/routes/routes_name.dart';
-import 'package:fb_fitbody/features/categories/presentation/cubit/get_categories_cubit/get_categories_cubit.dart';
+import 'package:fb_fitbody/features/categories/presentation/cubits/get_categories_cubit/get_categories_cubit.dart';
 import 'package:fb_fitbody/features/categories/presentation/widgets/categories_constants.dart';
 import 'package:fb_fitbody/features/categories/presentation/widgets/categories_grid_styles.dart';
 import 'package:fb_fitbody/features/categories/presentation/widgets/categories_view_skeleton.dart';
