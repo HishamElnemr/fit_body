@@ -3,6 +3,7 @@ import 'package:fb_fitbody/features/auth/presentation/views/login_view.dart';
 import 'package:fb_fitbody/features/auth/presentation/views/signup_view.dart';
 import 'package:fb_fitbody/features/cart/presentation/views/cart_view.dart';
 import 'package:fb_fitbody/features/categories/presentation/views/categories_view.dart';
+import 'package:fb_fitbody/features/categories/presentation/views/category_products_view.dart';
 import 'package:fb_fitbody/features/details/presentation/views/details_view.dart';
 import 'package:fb_fitbody/features/home/presentation/views/home_view.dart';
 import 'package:fb_fitbody/features/layout/presentation/views/layout_view.dart';
@@ -58,6 +59,12 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: settings,
           builder: (context) => const CategoriesView(),
+        );
+
+      case RoutesName.categoryProducts:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => const CategoryProductsView(),
         );
 
       default:

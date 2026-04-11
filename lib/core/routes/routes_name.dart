@@ -10,4 +10,5 @@ class RoutesName {
   static const String details = 'details_view';
   static const String cart = 'cart_view';
   static const String categories = 'categories_view';
+  static const String categoryProducts = 'category_products_view';
 }

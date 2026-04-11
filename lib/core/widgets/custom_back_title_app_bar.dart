@@ -1,4 +1,3 @@
-import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -47,44 +46,4 @@ class BackTitleBarContent extends StatelessWidget {
       ],
     );
   }
-}
-
-class CustomBackTitleAppBar extends StatelessWidget
-    implements PreferredSizeWidget {
-  const CustomBackTitleAppBar({
-    super.key,
-    required this.title,
-    this.onBackTap,
-    this.actions,
-    this.backgroundColor,
-  });
-
-  final String title;
-  final VoidCallback? onBackTap;
-  final List<Widget>? actions;
-  final Color? backgroundColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor:
-          backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
-      surfaceTintColor: Colors.transparent,
-      elevation: 0,
-      titleSpacing: kHorizontalPadding,
-      title: BackTitleBarContent(title: title, onBackTap: onBackTap),
-      actions: actions,
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1),
-        child: Container(
-          height: 1,
-          color: Theme.of(context).colorScheme.onTertiary,
-        ),
-      ),
-    );
-  }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
