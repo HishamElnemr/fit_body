@@ -3,6 +3,7 @@ import 'package:fb_fitbody/features/categories/presentation/views/categories_vie
 import 'package:fb_fitbody/features/home/presentation/views/home_view.dart';
 import 'package:fb_fitbody/features/layout/presentation/cubit/layout_cubit.dart';
 import 'package:fb_fitbody/features/layout/presentation/widgets/custom_bottom_navigation_bar.dart';
+import 'package:fb_fitbody/features/wishlist/presentation/views/wishlist_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +14,7 @@ class LayoutView extends StatelessWidget {
     HomeView(),
     CategoriesView(),
     CartView(),
-    Scaffold(body: Center(child: Text('Wishlist'))),
+    WishlistView(),
     Scaffold(body: Center(child: Text('Profile'))),
   ];
 
