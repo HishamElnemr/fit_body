@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fb_fitbody/core/services/auth_services.dart';
 import 'package:fb_fitbody/core/services/cart_services.dart';
 import 'package:fb_fitbody/core/services/get_products_services.dart';
+import 'package:fb_fitbody/core/services/hive_serices.dart';
 import 'package:fb_fitbody/features/auth/data/repositories/auth_repo_implementation.dart';
 import 'package:fb_fitbody/features/auth/domain/repositories/auth_repo.dart';
 import 'package:fb_fitbody/features/cart/data/repos/cart_repo_implementation.dart';
@@ -24,6 +25,7 @@ void setup() {
   getIt.registerSingleton<CartServices>(
     CartServices(supabaseClient: getIt<SupabaseClient>()),
   );
+  getIt.registerSingleton<HiveServices>(HiveServices());
   getIt.registerSingleton<AuthRepo>(
     AuthRepoImplementation(authServices: getIt<AuthServices>()),
   );

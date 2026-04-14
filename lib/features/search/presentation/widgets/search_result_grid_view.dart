@@ -1,6 +1,8 @@
 import 'package:fb_fitbody/core/widgets/product_widget.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
+import 'package:fb_fitbody/features/product/presentation/cubit/hive_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultGridView extends StatelessWidget {
   const SearchResultGridView({super.key, required this.products});
@@ -19,7 +21,15 @@ class SearchResultGridView extends StatelessWidget {
         ),
         itemCount: products.length,
         itemBuilder: (context, index) {
-          return ProductWidget(productDetailsEntity: products[index]);
+          return ProductWidget(
+            
+            productDetailsEntity: products[index],
+            onTap: () {
+              context.read<HiveCubit>().toggleProductInWishlist(
+                products[index],
+              );
+            },
+          );
         },
       ),
     );

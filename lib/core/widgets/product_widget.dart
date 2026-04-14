@@ -2,14 +2,20 @@ import 'package:fb_fitbody/core/constants/app_colors.dart';
 import 'package:fb_fitbody/core/routes/routes_name.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/core/widgets/add_to_wishlist_icon.dart';
 import 'package:fb_fitbody/core/widgets/custom_cached_network_image.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductWidget extends StatelessWidget {
-  const ProductWidget({super.key, required this.productDetailsEntity});
+  const ProductWidget({
+    super.key,
+    required this.productDetailsEntity,
+    required this.onTap,
+  });
   final ProductDetailsEntity productDetailsEntity;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -43,9 +49,9 @@ class ProductWidget extends StatelessWidget {
                         color: Theme.of(context).colorScheme.onSecondary,
                         borderRadius: BorderRadius.circular(100),
                       ),
-                      child: SvgPicture.asset(
-                        Assets.assetsImagesFavorite,
-                        color: Theme.of(context).colorScheme.primaryFixed,
+                      child: AddToWishlistIcon(
+                        productDetailsEntity: productDetailsEntity,
+                        //onTap: onTap,
                       ),
                     ),
                   ),

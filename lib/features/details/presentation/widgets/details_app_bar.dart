@@ -1,11 +1,10 @@
 import 'package:fb_fitbody/core/routes/routes_name.dart';
-import 'package:fb_fitbody/core/theme/cubit/change_theme_cubit.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
+import 'package:fb_fitbody/core/widgets/add_to_wishlist_icon.dart';
 import 'package:fb_fitbody/features/details/presentation/widgets/product_image_stack.dart';
 import 'package:fb_fitbody/features/product/domain/entities/product_details_entity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DetailsAppBar extends StatelessWidget {
@@ -60,13 +59,11 @@ class DetailsAppBar extends StatelessWidget {
           },
         ),
         const SizedBox(width: 12),
-        _buildAppBarIcon(
-          context,
-          icon: Assets.assetsImagesFavorite,
-          onTap: () {
-            context.read<ChangeThemeCubit>().toggleTheme();
-          },
+        AddToWishlistIcon(
+          productDetailsEntity: arguments,
+          variant: AddToWishlistIconVariant.appBar,
         ),
+
         const SizedBox(width: 16),
       ],
       flexibleSpace: FlexibleSpaceBar(

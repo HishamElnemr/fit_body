@@ -3,24 +3,16 @@ import 'package:fb_fitbody/core/constants/app_constants.dart';
 import 'package:fb_fitbody/core/utils/app_images.dart';
 import 'package:fb_fitbody/core/utils/app_styles.dart';
 import 'package:fb_fitbody/core/widgets/custom_cached_network_image.dart';
+import 'package:fb_fitbody/features/product/data/models/hive_product_model.dart';
+import 'package:fb_fitbody/features/product/presentation/cubit/hive_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WishlistItem extends StatelessWidget {
-  const WishlistItem({
-    super.key,
-    required this.imageUrl,
-    required this.title,
-    required this.price,
-    required this.oldPrice,
-    required this.quantity,
-  });
+  const WishlistItem({super.key, required this.hiveProductModel});
 
-  final String imageUrl;
-  final String title;
-  final double price;
-  final double oldPrice;
-  final int quantity;
+  final HiveProductModel hiveProductModel;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +25,16 @@ class WishlistItem extends StatelessWidget {
             width: 120,
             height: 120,
             decoration: BoxDecoration(
-              color: AppColors.cyan50,
-              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: Theme.of(context).colorScheme.onTertiary,
+              ),
+
+              borderRadius: BorderRadius.circular(16),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(16),
               child: CustomCachedNetworkImage(
-                imageUrl: imageUrl,
+                imageUrl: hiveProductModel.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -50,19 +45,19 @@ class WishlistItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  hiveProductModel.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppStyles.body2Medium14(context),
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  '\$${price.toStringAsFixed(2)}',
+                  '\$${hiveProductModel.price.toStringAsFixed(2)}',
                   style: AppStyles.captionSemiBold12(context),
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  '\$${oldPrice.toStringAsFixed(2)}',
+                  '\$${hiveProductModel.oldPrice.toStringAsFixed(2)}',
                   style: AppStyles.overlineRegular10(context).copyWith(
                     decoration: TextDecoration.lineThrough,
                     color: AppColors.lightGrey150,
@@ -71,16 +66,23 @@ class WishlistItem extends StatelessWidget {
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    _QuantityControl(quantity: quantity),
+                    _QuantityControl(quantity: hiveProductModel.quantity),
                     const Spacer(),
-                    SvgPicture.asset(
-                      Assets.assetsImagesTrash,
-                      colorFilter: const ColorFilter.mode(
-                        AppColors.red,
-                        BlendMode.srcIn,
+                    GestureDetector(
+                      onTap: () {
+                        context.read<HiveCubit>().toggleProductInWishlist(
+                          hiveProductModel.toEntity(),
+                        );
+                      },
+                      child: SvgPicture.asset(
+                        Assets.assetsImagesTrash,
+                        colorFilter: const ColorFilter.mode(
+                          AppColors.red,
+                          BlendMode.srcIn,
+                        ),
+                        width: 24,
+                        height: 24,
                       ),
-                      width: 24,
-                      height: 24,
                     ),
                   ],
                 ),
