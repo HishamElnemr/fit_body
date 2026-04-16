@@ -1,4 +1,5 @@
 import 'package:fb_fitbody/core/routes/routes_name.dart';
+import 'package:fb_fitbody/features/auth/domain/entities/user_entity.dart';
 import 'package:fb_fitbody/features/auth/presentation/views/login_view.dart';
 import 'package:fb_fitbody/features/auth/presentation/views/signup_view.dart';
 import 'package:fb_fitbody/features/cart/presentation/views/cart_view.dart';
@@ -29,7 +30,13 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const SignUpView());
 
       case RoutesName.layoutView:
-        return MaterialPageRoute(builder: (context) => const LayoutView());
+        final user = settings.arguments is UserEntity
+            ? settings.arguments as UserEntity
+            : null;
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) => LayoutView(user: user),
+        );
 
       case RoutesName.home:
         return MaterialPageRoute(builder: (context) => const HomeView());

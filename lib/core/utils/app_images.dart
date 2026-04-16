@@ -26,6 +26,10 @@ class Assets {
   /// Assets/images/arrow_left.svg
   static const String assetsImagesArrowLeft = "Assets/images/arrow_left.svg";
 
+  /// Assets for assetsImagesArrowRight
+  /// Assets/images/arrow_right.svg
+  static const String assetsImagesArrowRight = "Assets/images/arrow_right.svg";
+
   /// Assets for assetsImagesCancel
   /// Assets/images/cancel.svg
   static const String assetsImagesCancel = "Assets/images/cancel.svg";
@@ -42,6 +46,10 @@ class Assets {
   /// Assets/images/category_inactive.svg
   static const String assetsImagesCategoryInactive = "Assets/images/category_inactive.svg";
 
+  /// Assets for assetsImagesChangePassword
+  /// Assets/images/Change_Password.svg
+  static const String assetsImagesChangePassword = "Assets/images/Change_Password.svg";
+
   /// Assets for assetsImagesCheckBox
   /// Assets/images/check-box.svg
   static const String assetsImagesCheckBox = "Assets/images/check-box.svg";
@@ -50,6 +58,10 @@ class Assets {
   /// Assets/images/check-box-active.svg
   static const String assetsImagesCheckBoxActive = "Assets/images/check-box-active.svg";
 
+  /// Assets for assetsImagesDarkTheme
+  /// Assets/images/Dark_Theme.svg
+  static const String assetsImagesDarkTheme = "Assets/images/Dark_Theme.svg";
+
   /// Assets for assetsImagesEye
   /// Assets/images/eye.svg
   static const String assetsImagesEye = "Assets/images/eye.svg";
@@ -57,6 +69,10 @@ class Assets {
   /// Assets for assetsImagesEyeSlash
   /// Assets/images/eye-slash.svg
   static const String assetsImagesEyeSlash = "Assets/images/eye-slash.svg";
+
+  /// Assets for assetsImagesFAQs
+  /// Assets/images/FAQs.svg
+  static const String assetsImagesFAQs = "Assets/images/FAQs.svg";
 
   /// Assets for assetsImagesFavorite
   /// Assets/images/favorite.svg
@@ -102,6 +118,22 @@ class Assets {
   /// Assets/images/living-room-modern-style-3d-scenes-interior-design-145.webp
   static const String assetsImagesLivingRoomModernStyle3dScenesInteriorDesign145 = "Assets/images/living-room-modern-style-3d-scenes-interior-design-145.webp";
 
+  /// Assets for assetsImagesLogout
+  /// Assets/images/logout.svg
+  static const String assetsImagesLogout = "Assets/images/logout.svg";
+
+  /// Assets for assetsImagesOrderHistory
+  /// Assets/images/Order_History.png
+  static const String assetsImagesOrderHistory = "Assets/images/Order_History.png";
+
+  /// Assets for assetsImagesPaymentMethod
+  /// Assets/images/Payment_Method.svg
+  static const String assetsImagesPaymentMethod = "Assets/images/Payment_Method.svg";
+
+  /// Assets for assetsImagesPrivacyPolicy
+  /// Assets/images/Privacy_Policy.svg
+  static const String assetsImagesPrivacyPolicy = "Assets/images/Privacy_Policy.svg";
+
   /// Assets for assetsImagesProfileActive
   /// Assets/images/profile_active.svg
   static const String assetsImagesProfileActive = "Assets/images/profile_active.svg";
@@ -122,6 +154,10 @@ class Assets {
   /// Assets/images/send.svg
   static const String assetsImagesSend = "Assets/images/send.svg";
 
+  /// Assets for assetsImagesShippingAddress
+  /// Assets/images/Shipping_Address.svg
+  static const String assetsImagesShippingAddress = "Assets/images/Shipping_Address.svg";
+
   /// Assets for assetsImagesShoppingCartActive
   /// Assets/images/shopping_cart_active.svg
   static const String assetsImagesShoppingCartActive = "Assets/images/shopping_cart_active.svg";
@@ -133,6 +169,10 @@ class Assets {
   /// Assets for assetsImagesTagIcon
   /// Assets/images/tag_icon.svg
   static const String assetsImagesTagIcon = "Assets/images/tag_icon.svg";
+
+  /// Assets for assetsImagesTermsConditions
+  /// Assets/images/TermsConditions.svg
+  static const String assetsImagesTermsConditions = "Assets/images/TermsConditions.svg";
 
   /// Assets for assetsImagesTickCircle
   /// Assets/images/tick-circle.svg

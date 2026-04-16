@@ -15,7 +15,12 @@ class SignupFormBlocListener extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.authResponseEntity.message)),
           );
-          Navigator.pushNamed(context, RoutesName.home);
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            RoutesName.layoutView,
+            (route) => false,
+            arguments: state.authResponseEntity.user,
+          );
         } else if (state is SignupError) {
           ScaffoldMessenger.of(
             context,
