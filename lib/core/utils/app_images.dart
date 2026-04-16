@@ -6,6 +6,14 @@ class Assets {
   /// Assets/images/01OnlineShopping.png
   static const String assetsImages01OnlineShopping = "Assets/images/01OnlineShopping.png";
 
+  /// Assets for assetsImages01OnlineShopping1
+  /// Assets/images/01-Online-Shopping-1.png
+  static const String assetsImages01OnlineShopping1 = "Assets/images/01-Online-Shopping-1.png";
+
+  /// Assets for assetsImages01OnlineShopping2
+  /// Assets/images/01OnlineShopping2.svg
+  static const String assetsImages01OnlineShopping2 = "Assets/images/01OnlineShopping2.svg";
+
   /// Assets for assetsImages02OnlineShopping
   /// Assets/images/02OnlineShopping.png
   static const String assetsImages02OnlineShopping = "Assets/images/02OnlineShopping.png";

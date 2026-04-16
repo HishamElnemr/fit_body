@@ -15,7 +15,7 @@ class CartViewBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
           sliver: CartAppBar(),
         ),
-        SliverToBoxAdapter(child: CartViewBodyBlocBuilder()),
+        CartViewBodyBlocBuilder(),
         CartOrderInfoBlocBuilder(),
       ],
     );
